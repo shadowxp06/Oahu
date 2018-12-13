@@ -2,7 +2,7 @@
 name: Interface Changes
 about: Changes to certain files such as Interfaces
 title: ''
-labels: enhancement, Long-Term Goal
+labels: Long-Term Goal, enhancement
 assignees: ''
 
 ---
