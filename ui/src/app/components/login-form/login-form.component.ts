@@ -4,9 +4,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 import { AuthSystemService } from '../../services/auth-system/auth-system.service';
-import { AlertService } from '../../services/alert/alert.service';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-form',
