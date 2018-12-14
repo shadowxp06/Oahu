@@ -1,0 +1,97 @@
+---	  
+- name: Copy QA Configuration
+  template:
+    src: "config.js.j2"
+    dest: "{{ qa_config }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: create_dev_config
+
+- name: Copy Prod Configuration
+  template:
+    src: "config.js.j2"
+    dest: "{{ prod_config }}"
+    owner: root
+    group: root
+    mode: 0644
+  when: create_prod_config
+  
+- name: Copy Environment Configuration
+  template: 
+    src: "environment.js.j2"
+    dest: "{{ environment_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  
+- name: Make firewall rules script executable
+  file:
+    dest: "{{ firewall_rules }}"
+    mode: "+x"
+    
+- name: Create link to Firewall rules for Production
+  file:
+    src: "{{ firewall_rules }}"
+    dest: "{{ firewall_rules_link_dest }}"
+    state: link
+  when: create_dev_config
+  
+- name: Apply firewall rules 
+  script: "{{ firewall_rules_link_dest }}"
+  when: create_dev_config
+
+    
+- name: Install screen
+  become: true
+  apt:
+    name: screen
+    state: absent
+
+- name: Install nmap
+  become: true
+  apt: 
+    name: nmap
+    state: absent
+  when: create_dev_config
+  
+- name: Add CertBot PPA 
+  become: true
+  apt_repository:
+    repo: ppa:certbot/certbot
+  when: create_ssl_certs  
+  
+- name: Update aptitude
+  become: true
+  apt:
+    update_cache: yes
+  when: create_dev_config
+    
+- name: Install CertBot for nginx
+  become: true
+  apt:
+    name: "{{ nginx_certbot_package }}"
+    state: latest
+  when: create_ssl_certs
+  
+# Commands based from https://github.com/geerlingguy/ansible-role-certbot
+- name: Check to see if API Certificate already exists.
+  stat:
+    path: "{{ letsencrypt_cert_directory }}/{{ api_site }}/{{ letsencrypt_cert_filename }}"
+  register: cert_api
+  when: create_ssl_certs
+
+- name: Check to see if Frontend Certificate already exists.
+  stat:
+    path: "{{ letsencrypt_cert_directory }}/{{ site }}/{{ letsencrypt_cert_filename }}"
+  register: cert_frontend
+  when: create_ssl_certs
+  
+- name: Generate Frontend Certificate
+  shell: "{{ certbot_command }} --email {{ cert_email }} {{ site }}"
+  when: create_ssl_certs
+
+- name: Generate API Certificate
+  shell: "{{ certbot_command }} --email {{ cert_email }} {{ api_site }} "
+  when: create_ssl_certs  
+  

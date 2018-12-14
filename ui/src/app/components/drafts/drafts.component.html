@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div fxLayout="column" fxFill>
+      <div fxLayout fxFlex>
+        <div fxFlex="15" fxShow="{{ showSideBar }}">
+          <app-master-sidebar></app-master-sidebar>
+        </div>
+        <div fxFlex="{{ showSideBar ? '83' : '100' }}">
+          <app-drafts-datatable></app-drafts-datatable>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <div *ngIf="data.type == type.Text">
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.result" [placeholder]="data.placeholder" />
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.result" cdkFocusInitial>OK</button>
+  <button mat-button (click)="cancelClick()">Cancel</button>
+</div>

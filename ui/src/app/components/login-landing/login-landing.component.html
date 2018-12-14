@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div fxLayout="column" fxFill>
+      <div fxFlex="100">
+        <mat-card>
+          <mat-card-content>
+            <div class="d-flex flex-column">
+              <button type="button" class="btn btn-outline-primary btn-lg mb-2" [disabled]="true" (click)="goToCASLogin()">Georgia Tech Login</button>
+              <button type="button" class="btn btn-outline-primary btn-lg mb-2" [disabled]="true">Canvas Login</button>
+              <button type="button" class="btn btn-outline-primary btn-lg mb-2" (click)="goToLogin()">Normal Login</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

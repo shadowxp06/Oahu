@@ -1,0 +1,13 @@
+---
+# Based around the edx_sandbox.yml
+
+- name: Install PostgreSQL
+  hosts: all
+  become: True
+  gather_facts: True
+  vars_files:
+    - vars/api_vars.yml
+  roles:
+    - role: postgresql
+      when: ansible_build == 'all' or ansible_build == 'db'
+    

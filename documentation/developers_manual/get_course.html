@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>get_course()</title>
+    <meta charset="UTF-8"  name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="devsite.css">
+</head>
+<body>
+<div class="topnav">
+    <a href = "index.html">Oahu Developer's Manual</a>
+    <input type="text" placeholder="Search..">
+</div>
+
+<div class="sidenav">
+    <a class="large" href = "index.html">Introduction</a>
+    <a class="large" href = "docAdmin.html">Administration</a>
+    <a class="large" href = "docSettings.html">Settings</a>
+    <a class="large" href = "docPosting.html">Posting</a>
+    <a class="large" href = "docUsergroups.html">User Groups</a>
+    <a class="large" href = "docMessagegroups.html">Message Groups</a>
+    <a class="large" href = "docProcedurelist.html">Procedures</a>
+    <br>
+    <a href = "add_instructor_to_course.html">add_instructor_to_course</a>
+    <a href = "add_message_group_members.html">add_message_group_members</a>
+    <a href = "add_message_poll_item.html">add_message_poll_item</a>
+    <a href = "add_message_poll_vote.html">add_message_poll_vote</a>
+    <a href = "add_message_to_usergroup.html">add_message_to_usergroup</a>
+    <a href = "add_message_vote.html">add_message_vote</a>
+    <a href = "add_student_to_course.html">add_student_to_course</a>
+    <a href = "add_ta_to_course.html">add_ta_to_course</a>
+    <a href = "add_user_to_group.html">add_user_to_group</a>
+    <a href = "create_message.html">create_message</a>
+    <a href = "create_message_group.html">create_message_group</a>
+    <a href = "create_message_reply.html">create_message_reply</a>
+    <a href = "create_message_thread.html">create_message_thread</a>
+    <a href = "create_user_group.html">create_user_group</a>
+    <a href = "create_usergroup_thread.html">create_usergroup_thread</a>
+    <a href = "db_add_user.html">db_add_user</a>
+    <a href = "db_admin_activate_user.html">db_admin_activate_user</a>
+    <a href = "db_admin_add_admin.html">db_admin_add_admin</a>
+    <a href = "db_admin_add_user.html">db_admin_add_user</a>
+    <a href = "db_admin_create_course.html">db_admin_create_course</a>
+    <a href = "db_admin_deactivate_user.html">db_admin_deactivate_user</a>
+    <a href = "db_admin_delete_admin.html">db_admin_delete_admin</a>
+    <a href = "db_init_user.html">db_init_user</a>
+    <a href = "db_login.html">db_login</a>
+    <a href = "db_set_global_setting.html">db_set_global_setting</a>
+    <a href = "delete_message.html">delete_message</a>
+    <a href = "delete_user_from_course.html">delete_user_from_course</a>
+    <a href = "delete_user_from_group.html">delete_user_from_group</a>
+    <a href = "edit_message.html">edit_message</a>
+    <a href = "get_active_courses.html">get_active_courses</a>
+    <a href = "get_all_courses.html">get_all_courses</a>
+    <a class="active" href = "get_course.html">get_course</a>
+    <a href = "get_limited_search.html">get_limited_search</a>
+    <a href = "get_limited_thread_messages.html">get_limited_thread_messages</a>
+    <a href = "get_limited_usergroup_threads.html">get_limited_usergroup_threads</a>
+    <a href = "get_message.html">get_message</a>
+    <a href = "get_message_group_members.html">get_message_group_members</a>
+    <a href = "get_message_poll_votes.html">get_message_poll_votes</a>
+    <a href = "get_message_threads.html">get_message_threads</a>
+    <a href = "get_message_votes.html">get_message_votes</a>
+    <a href = "get_my_active_courses.html">get_my_active_courses</a>
+    <a href = "get_my_all_courses.html">get_my_all_courses</a>
+    <a href = "get_my_messagegroups.html">get_my_messagegroups</a>
+    <a href = "get_my_usergroups.html">get_my_usergroups</a>
+    <a href = "get_setting_for_course.html">get_setting_for_course</a>
+    <a href = "get_user.html">get_user</a>
+    <a href = "get_user_settings.html">get_user_settings</a>
+    <a href = "get_usergroup_members.html">get_usergroup_members</a>
+    <a href = "get_usergroup_threads.html">get_usergroup_threads</a>
+    <a href = "get_users_in_course.html">get_users_in_course</a>
+    <a href = "local_login_create_user.html">local_login_create_user</a>
+    <a href = "local_login_get_user.html">local_login_get_user</a>
+    <a href = "local_login_validate.html">local_login_validate</a>
+    <a href = "mark_message_as_read.html">mark_message_as_read</a>
+    <a href = "mark_message_as_unread.html">mark_message_as_unread</a>
+    <a href = "mark_thread_as_read.html">mark_thread_as_read</a>
+    <a href = "mark_thread_as_unread.html">mark_thread_as_unread</a>
+    <a href = "remove_message_from_usergroup.html">remove_message_from_usergroup</a>
+    <a href = "search_messages.html">search_messages</a>
+    <a href = "self_enroll_student.html">self_enroll_student</a>
+    <a href = "set_course_default_setting.html">set_course_default_setting</a>
+    <a href = "set_course_default_tsetting.html">set_course_default_tsetting</a>
+    <a href = "set_group_member_type.html">set_group_member_type</a>
+    <a href = "set_school_default_setting.html">set_school_default_setting</a>
+    <a href = "set_system_default_setting.html">set_system_default_setting</a>
+    <a href = "set_system_default_tsetting.html">set_system_default_tsetting</a>
+    <a href = "set_user_default_setting.html">set_user_default_setting</a>
+    <a href = "set_user_default_tsetting.html">set_user_default_tsetting</a>
+    <a href = "set_user_setting.html">set_user_setting</a>
+    <a href = "set_user_tsetting.html">set_user_tsetting</a>
+    <a href = "update_course_settings.html">update_course_settings</a>
+
+</div>
+<div class="main">
+    <h3>get_course()</h3>
+    <p><h4>Parameters</h4>
+    <lu>
+        <li>     Token(character varying)     </li>
+        <li>     CourseID(integer)            </li>
+
+
+    </lu>
+    </p>
+    <p><h4>Returns</h4>
+    <lu>
+        <li>     Success or information on a specific course {ID,Name,Number,EndDate,StartDate}        </li>
+    </lu>
+
+    </p>
+    <p><h4>Description</h4>
+    <lu>
+        <li>     Returns the information about a specific course.    </li>
+    </lu>
+    </p>
+    <p><h4>Errors</h4>
+    <lu>
+        <li>   1 - Invalid Session.      </li>
+        <li>   2 - User is not a member of this course.    </li>
+
+    </lu>
+    </p>
+    <p><h4>Related functions</h4>
+    <lu>
+        <li><a href = "get_active_courses.html">get_active_courses</a></li>
+        <li><a href = "get_all_courses.html">get_all_courses</a></li>
+        <li><a href = "get_my_active_courses.html">get_my_active_courses</a></li>
+        <li><a href = "get_my_all_courses.html">get_my_all_courses</a></li>
+        <li><a href = "get_course.html">get_course</a></li>
+    </lu>
+    </p>
+
+</div>
+</body>
+</html>

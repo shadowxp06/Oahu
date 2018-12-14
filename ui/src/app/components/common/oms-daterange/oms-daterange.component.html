@@ -1,0 +1,25 @@
+<div *ngIf="direction == DirAlign.row" class="d-flex flex-row" [formGroup]="formGroup">
+  <mat-form-field >
+    <input matInput [formControlName]="rangeOneName" [matDatepicker]="rangeOne" (dateChange)="setRangeOne($event)" [placeholder]="placeholder[0]">
+    <mat-datepicker-toggle matSuffix [for]="rangeOne"></mat-datepicker-toggle>
+    <mat-datepicker #rangeOne></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="ml-2">
+    <input matInput [formControlName]="rangeTwoName" [matDatepicker]="rangeTwo" (dateChange)="setRangeTwo($event)" [placeholder]="placeholder[1]">
+    <mat-datepicker-toggle matSuffix [for]="rangeTwo"></mat-datepicker-toggle>
+    <mat-datepicker #rangeTwo></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div *ngIf="direction == DirAlign.column" class="d-flex flex-column"  [formGroup]="formGroup">
+  <mat-form-field>
+    <input matInput [formControlName]="rangeOneName" [matDatepicker]="rangeOne" (dateChange)="setRangeOne($event)" [placeholder]="placeholder[0]">
+    <mat-datepicker-toggle matSuffix [for]="rangeOne"></mat-datepicker-toggle>
+    <mat-datepicker #rangeOne></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControlName]="rangeTwoName" [matDatepicker]="rangeTwo" (dateChange)="setRangeTwo($event)" [placeholder]="placeholder[1]">
+    <mat-datepicker-toggle matSuffix [for]="rangeTwo"></mat-datepicker-toggle>
+    <mat-datepicker #rangeTwo></mat-datepicker>
+  </mat-form-field>
+</div>

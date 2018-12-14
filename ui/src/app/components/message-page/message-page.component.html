@@ -1,0 +1,32 @@
+<mat-card class="rounded mt-2 ml-2 border border-primary">
+  <mat-card-content>
+    <app-message-thread [parentId]="messageId"
+                        [expandReplies]="true"
+                        [showFavorite]="true"
+                        (messageDataOutput)="messageDataOutput($event)">
+    </app-message-thread>
+
+    <app-message-poll
+      [pollItems]="pollItems"
+      [pollType]="pollType"
+      [pollVotes]="pollVotes"
+      [settings]="settings"
+      [formGroup]="messageForm"
+      [hasUserVoted]="hasVoted"
+      [threadTitle]="title"
+      [hidden]="messageType != mt.poll || showReply">
+    </app-message-poll>
+    <form class="mt-2" [formGroup]="messageForm" [hidden]="!showReply">
+      <div class="d-flex flex-column">
+        <ckeditor #myckeditor [config]="ckeConfig" debounce="500" formControlName="editor"></ckeditor>
+        <div class="d-flex flex-row pt-2 pb-2">
+          <button color="primary" type="submit" (click)="save()" mat-raised-button>Submit</button>&nbsp;
+          <button color="accent" (click)="saveDraft()" mat-raised-button>Save Draft</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card class="rounded mt-2 ml-2 border border-primary"  [hidden]="showReply">
+  <app-thread-reply [parentId]="messageId"></app-thread-reply>
+</mat-card>

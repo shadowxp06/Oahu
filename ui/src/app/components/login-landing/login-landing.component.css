@@ -1,0 +1,7 @@
+mat-card {
+  width: 350px;
+  display: flow;
+  margin: 50px auto 50px auto;
+
+  vertical-align:middle;
+}

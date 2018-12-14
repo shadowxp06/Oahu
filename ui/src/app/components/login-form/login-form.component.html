@@ -1,0 +1,21 @@
+<mat-card class="card">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm">
+      <p>
+        <mat-form-field class="formField">
+          <input matInput type="text" id="email" placeholder="Email Address" formControlName="email" required>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field  class="formField">
+          <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
+        </mat-form-field>
+      </p>
+        <div class="d-flex flex-row">
+          <button routerLink="/dashboard" type="submit" mat-raised-button color="primary" class="mr-2" (click)="submitLogin()" [disabled]="loginForm.invalid">Login</button>
+          <button routerLink="/registration" type="button" mat-raised-button color="primary">New User</button>
+        </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,57 @@
+<div [formGroup]="parentFormGroup">
+  <mat-card>
+    <mat-card-content>
+      <mat-card class="card mb-2">
+        <mat-card-header>
+          <mat-card-title>Email Notifications</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="d-flex flex-column">
+            <mat-slide-toggle name="email_NewQuestionsNotesAnnouncements" formControlName="email_NewQuestionsNotesAnnouncements" [checked]="email_NewQuestionsNotesAnnouncements">
+              New Questions, Notes, Announcements
+            </mat-slide-toggle>
+            <mat-slide-toggle name="email_FollowedQuestionsNotesAnnouncements" formControlName="email_FollowedQuestionsNotesAnnouncements" [checked]="email_FollowedQuestionsNotesAnnouncements">
+              Followed Questions, Notes, Announcements
+            </mat-slide-toggle>
+            <mat-slide-toggle name="email_NewReplyOnFavorite" formControlName="email_NewReplyOnFavorite" [checked]="email_NewReplyOnFavorite">
+              New Reply on Favorite Thread
+            </mat-slide-toggle>
+            <mat-slide-toggle name="email_NewReplyOnCreatedThread" formControlName="email_NewReplyOnCreatedThread" [checked]="email_NewReplyOnCreatedThread">
+              New Reply on Threads Created
+            </mat-slide-toggle>
+            <mat-slide-toggle name="email_groupIsTagged" formControlName="email_groupIsTagged" [checked]="email_groupIsTagged">
+              Group is tagged
+            </mat-slide-toggle>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="card mb-2">
+        <mat-card-header>
+          <mat-card-title>Display Options</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-oms-radiogroup
+            required="false"
+            [items]="Notifications"
+            name="display_NewQuestionsNotesAnnouncements"
+            [formGroup]="parentFormGroup"
+            [direction]="DirAlign.column"
+            title="For New Questions, Notes or Announcements"
+            [selectedItem]="display_NewQuestionsNotesAnnouncements"
+            (outputData)="setNewAnnouncements($event)">
+          </app-oms-radiogroup>
+          <app-oms-radiogroup
+            required="false"
+            [items]="Notifications"
+            name="display_FollowedQuestionsNotesAnnouncements"
+            [formGroup]="parentFormGroup"
+            [direction]="DirAlign.column"
+            title="For questions, announcements, notes or polls that you follow"
+            [selectedItem]="display_FollowedQuestionsNotesAnnouncements"
+            (outputData)="setFollowing($event)">
+          </app-oms-radiogroup>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

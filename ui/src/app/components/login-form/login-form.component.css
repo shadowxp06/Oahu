@@ -1,0 +1,12 @@
+/* https://stackoverflow.com/questions/49690581/unable-to-position-mat-card-at-he-centre-of-my-window-using-flex-layout */
+mat-card {
+  width: 350px;
+  display: flow;
+  margin: 50px auto 50px auto;
+
+  vertical-align:middle;
+}
+
+.formField {
+  width:100%;
+}

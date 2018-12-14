@@ -1,0 +1,4 @@
+.toggles {
+  display: flex;
+  flex-direction: row;
+}

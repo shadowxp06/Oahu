@@ -1,0 +1,55 @@
+<div [hidden]="(numberOfReplies > 0)">
+  <p class="lead">No replies yet.</p>
+</div>
+<div [hidden]="!(messageType != mt.question)">
+  <mat-card class="mt-2" *ngFor="let item of _replies">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <img class="userIcon" src="assets/user-demo-face.jpg" width="64" height="64" />
+      </div>
+      <mat-card-title class="ml-4 mt-1 d-flex flex-row">
+        <p class="h5">{{threadTitle}}</p>
+      </mat-card-title>
+      <mat-card-subtitle   class="ml-4">
+        Asked on {{item.TimeCreated | date: 'MM/dd/yyyy hh:mm a'}} by {{item.FirstName}} {{item.LastName}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div [innerHTML]="item.Message"></div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="d-flex flex-row">
+        <a [routerLink]="['/createreply', item.ID]" [queryParams]="{reply: true, retMessageId: parentId}"><mat-icon class="mr-2" color="primary">reply</mat-icon></a>
+        <fa-icon class="ml-2 fa-icon fa-1x text-primary" [icon]="faThumbsUp"></fa-icon>
+        <a [routerLink]="['/editpost/', parentId]"><fa-icon class="ml-3 fa-icon fa-1x text-primary" [icon]="faEdit" [hidden]="!isMessageOwner"></fa-icon></a>
+        <fa-icon class="ml-3 fa-icon fa-1x text-primary" [icon]="faStar"></fa-icon>
+        <fa-icon class="ml-3 fa-icon fa-1x text-primary" [icon]="faLock" [hidden]="!isLocked"></fa-icon>
+      </div>
+    </mat-card-actions>
+    <mat-card-footer *ngFor="let subItem of item.ChildThreads">
+      <mat-card>
+        <mat-card-header>
+          <div class="d-flex flex-column">
+            <div class="d-flex flex-row">
+              <div mat-card-avatar>
+                <img class="userIcon" src="assets/user-demo-face.jpg" width="32" height="32" />
+              </div>
+              <div>
+                {{subItem.FirstName}} {{subItem.LastName}} <div class="text-muted subtitle">({{subItem.TimeCreated | date: 'MM/dd/yyyy'}})</div>
+              </div>
+            </div>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="mt-3">
+          <div class="ml-5" [innerHTML]="subItem.Message"></div>
+        </mat-card-content>
+      </mat-card>
+      <mat-divider></mat-divider>
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+<div [hidden]="!(messageType == mt.question)">
+  <!-- Question stuff -->
+</div>
+

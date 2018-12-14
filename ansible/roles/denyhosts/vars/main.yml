@@ -1,0 +1,3 @@
+---
+denyhosts_conf_path: /etc
+denyhosts_conf_file_path: /etc/denyhosts.conf

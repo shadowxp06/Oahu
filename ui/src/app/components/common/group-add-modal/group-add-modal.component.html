@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Group Management</h1>
+<div mat-dialog-content>
+  <p>Enter Group Name</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.groupName" placeholder="Group Name" required />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>OK</button>
+</div>

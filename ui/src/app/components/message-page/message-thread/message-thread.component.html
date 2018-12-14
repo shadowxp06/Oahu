@@ -1,0 +1,48 @@
+<mat-card class="rounded mt-2 ml-2">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <img class="userIcon" src="assets/user-demo-face.jpg" width="64" height="64" />
+    </div>
+    <mat-card-title class="ml-4 mt-1 d-flex flex-row">
+      <p class="h4">{{title}}</p>
+    </mat-card-title>
+    <mat-card-subtitle class="ml-4">
+      Asked on {{editedDate | date: 'MM/dd/yyyy hh:mm a'}} by {{displayName}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div [innerHTML]="message"></div>
+
+    <div *ngIf="isInstructorEndorsed" class="text-center text-danger pt-2 font-weight-bold">
+      <div *ngIf="isQuestion">An Instructor ({{instructorEndorsedName}}) thinks this is a good Question.</div>
+      <div *ngIf="isAnnouncement">An Instructor ({{instructorEndorsedName}}) thinks this is a good Answer.</div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="d-flex flex-row">
+      <a [routerLink]="['/createreply', parentId]"
+         [queryParams]="{reply: true, retMessageId: parentId}">
+        <mat-icon class="mr-2" color="primary">reply</mat-icon>
+      </a>
+      <a>
+        <fa-icon class="ml-2 fa-icon fa-1x showCursor"
+                  [ngClass]="{'text-primary': !hasLiked, 'text-danger': hasLiked}"
+                  [icon]="faThumbsUp"
+                  (click)="doLike()"></fa-icon>
+      </a>
+      <div class="ml-1 likes pt-1">{{numberOfGoodAnswers}}</div>
+      <a [routerLink]="['/editpost/', parentId]">
+        <fa-icon class="ml-3 fa-icon fa-1x text-primary"
+                 [icon]="faEdit"
+                 [hidden]="!isMessageOwner"></fa-icon>
+      </a>
+      <a>
+        <fa-icon class="ml-3 fa-icon fa-1x text-primary showCursor"
+                 [ngClass]="{'text-primary': !isFavorite, 'text-danger': isFavorite}"
+                 (click)="addFavorite()"
+                 [icon]="faStar"></fa-icon>
+      </a>
+      <fa-icon class="ml-3 fa-icon fa-1x text-primary" [icon]="faLock" [hidden]="!isLocked"></fa-icon>
+    </div>
+  </mat-card-actions>
+</mat-card>

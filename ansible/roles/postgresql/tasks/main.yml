@@ -1,0 +1,84 @@
+---
+- name: Add PostgreSQL Aptitude Key
+  become: true
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+
+- name: Add PostgreSQL Repository
+  become: true
+  apt_repository:
+    repo: deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main
+    state: present
+    
+- name: Update aptitude
+  become: true
+  apt:    
+    update_cache: yes
+    cache_valid_time: 86400
+    upgrade: yes
+
+- name: Install PostgreSQL
+  become: true
+  apt:
+    name: "{{ postgresql_packagename }}"
+    state: present
+    
+- name: Install required packages
+  become: true
+  apt:
+    name: "{{item}}"
+  with_items:
+    - python-psycopg2
+
+
+- name: Copy PostgreSQL Dev Config
+  template:
+    src: "{{ postgresql_config_dev_template }}"
+    dest: "{{ postgres_config_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart postgresql
+    
+- name: Copy PostgreSQL Production Config
+  template:
+    src: "{{ postgresql_config_prod_template }}"
+    dest: "{{ postgres_config_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart postgresql    
+
+- name: Copy HBA Dev Config
+  template:
+    src: "{{ postgresql_hba_dev_template }}"
+    dest: "{{ postgres_hba_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart postgresql
+  when: install_dev_tools
+  
+- name: Copy HBA Production Config
+  template:
+    src: "{{ postgresql_hba_prod_template }}"
+    dest: "{{ postgres_hba_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart postgresql
+  when: install_dev_tools == false
+
+# DB and User Setup
+- import_tasks: users.yml
+- import_tasks: databases.yml
+# End
+    
+- name: Ensure PostgreSQL is started and enabled to start at boot
+  service: name=postgresql state=started enabled=yes
+  

@@ -1,0 +1,16 @@
+.numbersBadge {
+  color: white;
+  background-color: #73AD21;
+  border: 2px solid #73AD21;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.likes {
+  font-size: 14px;
+}
+
+.userIcon {
+  padding-left: 5px;
+  border-radius: 50%;
+}

@@ -1,0 +1,43 @@
+<div [formGroup]="parentFormGroup">
+  <mat-card class="card">
+    <mat-card-content>
+      <div>
+        <app-oms-radiogroup name="postsBy"
+                            [items]="postsByOptions"
+                            required="true"
+                            [formGroup]="parentFormGroup"
+                            [direction]="DirAlign.column"
+                            title="Posts By"
+                            [selectedItem]="defPostOpt"
+                            (outputData)="setPostsBy($event)">
+        </app-oms-radiogroup>
+      </div>
+
+      <div *ngIf="defPostOpt == 1">
+        <app-oms-daterange name="Range"
+        [formGroup]="parentFormGroup"
+        [placeholder]="placeHolders"
+        [direction]="DirAlign.column"
+        rangeOneName="participationStart"
+        rangeTwoName="participationEnd">
+
+        </app-oms-daterange>
+      </div>
+
+      <div class="mt-3">
+        <app-oms-radiogroup name="exportOptions"
+                            [items]="exportOptions"
+                            required="true"
+                            [formGroup]="parentFormGroup"
+                            [direction]="DirAlign.column"
+                            title="Export Options"
+                            [selectedItem]="defExpOpt"
+                            (outputData)="setExportOptions($event)">
+        </app-oms-radiogroup>
+      </div>
+      <div class="mt-3">
+        <button type="button" class="btn btn-outline-primary">Export Posts</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+var config = {
+    app: {
+        port: {{ dev_api_port }},
+        version: "{{ version }}",
+        attachmentsdir: './attachments/',
+        logdir: './logs/',
+		allow_origin: '*',
+		sendgrid_api_key: '{{ sendgrid_api_key }}',
+		access_key_random: '432784318743',
+		dev_mode_bypass_security: true,
+		use_inbuilt_cors: true
+    },
+    db: {
+        host: '{{ dev_db_host }}',
+        port: 5432,
+        database: '{{ dev_api_database }}',
+        user: '{{ dev_db_user }}',
+        password: '{{ dev_db_pass }}'
+    }
+};
+
+module.exports = config;

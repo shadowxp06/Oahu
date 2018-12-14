@@ -1,0 +1,20 @@
+---
+qa_config: /oms-discussions/api/config/config.qa.js
+prod_config: /oms-discussions/api/config/config.prod.js
+environment_file: /oms-discussions/oms-discussions/src/environments/environment.js
+proxy_config_file: /oms-discussions/oms-discussions/proxy.conf.json
+firewall_rules: /oms-discussions/configs/firewall/iptables.prod.sh
+firewall_rules_link_dest: /root/run-firewall-rules
+omsdiscussions_user_home: /oms-discussions/user
+git_pull_script: /oms-discussions/build/scripts/git-pull.sh
+git_pull_script_dest: /root/git-pull.sh
+run_ansible_script: /oms-discussions/build/scripts/run-ansible.sh
+run_ansible_script_dest: /root/run-ansible.sh
+manage_script: /oms-discussions/build/manage.py
+manage_script_dest: /root/manage.py
+nginx_certbot_package: python-certbot-nginx
+letsencrypt_cert_directory: /etc/letsencrypt/live/
+letsencrypt_cert_filename: cert.pem
+certbot_command: certbot --agree-tos --standalone --noninteractive
+nginx_sites: /etc/nginx/sites-enabled
+nginx_sites_dest: /root/nginx-sites

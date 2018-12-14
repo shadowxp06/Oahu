@@ -1,0 +1,13 @@
+.grid-container {
+  margin: 20px;
+}
+
+
+.mat-column- {
+  display: flex;
+  justify-content: flex-end;
+}
+
+body {
+  background-color: #f1f1f1;
+}

@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+
+span.messageSubtitle {
+  font-style: italic;
+  font-size: 13px;
+}
+
+span.messageTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.addIcon {
+  padding-left: 10px;
+}
+
+
+body {
+  background-color: #f1f1f1;
+}

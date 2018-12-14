@@ -1,0 +1,13 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let helpItem of helpItems">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{helpItem.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div *ngFor="let template of helpItem.items">
+      <div [innerHtml]="template.html"></div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

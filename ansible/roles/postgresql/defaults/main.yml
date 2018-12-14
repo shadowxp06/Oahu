@@ -1,0 +1,6 @@
+postgresql_packagename: postgresql-10
+postgresql_config_dev_template: "postgres.conf.qa.j2"
+postgresql_config_prod_template: "postgres.conf.prod.j2"
+postgresql_hba_dev_template: "pg_hba.conf.qa.j2"
+postgresql_hba_prod_template: "pg_hba.conf.prod.j2"
+nginx_pgadmin4_template: "pgadmin4.vhost.j2"

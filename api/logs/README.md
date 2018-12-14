@@ -1,0 +1,1 @@
+This is a place holder document to make sure logs gets added to git

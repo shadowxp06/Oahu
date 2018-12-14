@@ -1,0 +1,18 @@
+<div [formGroup]="parentFormGroup">
+  <mat-card class="card">
+    <mat-card-content>
+      <mat-card class="card">
+        <mat-card-title>Groups List <button type="button" class="btn btn-outline-primary mr-2" (click)="addGroup()">Add Group</button></mat-card-title>
+        <mat-card-content>
+          <div class="d-flex flex-column">
+            <div>
+              <app-groups-datatable
+                [classId]="classId"
+              ></app-groups-datatable>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

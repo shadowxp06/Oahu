@@ -1,0 +1,23 @@
+---
+- name: Remove DenyHosts
+  apt:
+    name: denyhosts
+    state: absent
+    
+- name: Install Denyhosts 
+  apt:
+    name: denyhosts
+    update_cache: true
+    
+- name: Copy DenyHosts configuration
+  template:
+    src: "{{ denyhosts_config_template }}"
+    dest: "{{ denyhosts_conf_file_path }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+  - restart denyhosts
+
+- name: Ensure Denyhosts is started and enabled to start at boot.
+  service: name=nginx state=started enabled=yes

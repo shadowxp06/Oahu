@@ -1,0 +1,40 @@
+<div class="d-flex flex-row justify-content-between">
+  <mat-form-field class="w-25">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by Title">
+  </mat-form-field>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+</div>
+<table mat-table [dataSource]="matDataSource" class="mat-elevation-z8" matSort>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.FirstName}} {{element.LastName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.LoginName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="currentStatus">
+    <th mat-header-cell *matHeaderCellDef> Current User Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.UserType}}  </td>
+  </ng-container>
+  <ng-container matColumnDef="promote">
+    <th mat-header-cell *matHeaderCellDef> Promote to TA / Demote from TA </th>
+    <td mat-cell *matCellDef="let element">
+      <div *ngIf="element.Demote && element.UserType != 'Instructor' && !disablePromote" class="mt-2 mb-2">
+        <button *ngIf="!isMobile" type="button" class="btn btn-outline-primary" (click)="changeStatus(element, status.demote);">Demote to Student</button>
+        <a *ngIf="isMobile" class="showCursor"><fa-icon class="fa-icon fa-lg text-danger" [icon]="demote"></fa-icon></a>
+      </div>
+      <div *ngIf="!element.Demote && element.UserType != 'Instructor' && !disablePromote" class="mt-2 mb-2" (click)="changeStatus(element, status.promote);">
+        <button *ngIf="!isMobile" type="button" class="btn btn-outline-primary">Promote to TA</button>
+        <a *ngIf="isMobile" class="showCursor"><fa-icon class="fa-icon fa-lg text-danger" [icon]="promote"></fa-icon></a>
+      </div>
+      <div *ngIf="element.UserType == 'Instructor' || disablePromote">
+        N/A
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

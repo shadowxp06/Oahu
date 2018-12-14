@@ -1,0 +1,42 @@
+<div [formGroup]="parentFormGroup">
+  <mat-card class="card w-100">
+    <mat-card-content>
+      <mat-card class="card mb-2">
+        <mat-card-header>
+          <mat-card-title>General Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="d-flex flex-column">
+            <app-oms-daterange name="Range"
+                               class="w-50"
+                           [formGroup]="parentFormGroup"
+                           [placeholder]="placeHolders"
+                           [direction]="DirAlign.column"
+                            rangeOneName="courseStart"
+                            rangeTwoName="courseEnd">
+            </app-oms-daterange>
+            <mat-form-field hintLabel="Course Enrollment Key">
+              <input matInput formControlName="enrollKey" placeholder="Enrollment Key">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card w-100">
+        <mat-card-header>
+          <mat-card-title>Access Control</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="large">
+          <app-acl-datatable
+            [courseId]="courseId">
+          </app-acl-datatable>
+        </mat-card-content>
+        <mat-card-footer>
+          <div class="d-flex flex-row">
+            <button type="button" class="btn btn-outline-primary ml-2 mb-2" (click)="openCourseEnrollment()">Enroll User</button>
+          </div>
+        </mat-card-footer>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,39 @@
+<mat-card class="rounded w-100 mt-2 ml-2 border border-primary">
+  <mat-card-content>
+    <div class="d-flex flex-row justify-content-between">
+      <mat-form-field class="w-50">
+        <input matInput placeholder="Filter">
+      </mat-form-field>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let row">
+          {{row.title}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastupdated">
+        <th mat-header-cell *matHeaderCellDef>Last Updated</th>
+        <td mat-cell *matCellDef="let row">
+          {{row.lastupdated}}
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="quickactions">
+        <th mat-header-cell *matHeaderCellDef>Quick Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <fa-icon class="fa-lg mr-2 text-warning" [icon]="faEdit"></fa-icon>
+          <fa-icon class="fa-lg text-danger" [icon]="faTrashAlt"></fa-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+

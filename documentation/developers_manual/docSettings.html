@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Settings</title>
+    <meta charset="UTF-8"  name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="devsite.css">
+</head>
+<body>
+<div class="topnav">
+    <a href = "index.html">Oahu Developers Manual</a>
+    <input type="text" placeholder="Search..">
+</div>
+
+<div class="sidenav">
+    <a class="large" href = "index.html">Introduction</a>
+    <a class="large" href = "docAdmin.html">Administratation</a>
+    <a class="large active" href = "docSettings.html">Settings</a>
+    <a class="large" href = "docPosting.html">Posting</a>
+    <a class="large" href = "docUsergroups.html">User Groups</a>
+    <a class="large" href = "docMessagegroups.html">Message Groups</a>
+    <a class="large" href = "docProcedurelist.html">Procedures</a>
+    <br>
+    <a href = "add_instructor_to_course.html">add_instructor_to_course</a>
+    <a href = "add_message_group_members.html">add_message_group_members</a>
+    <a href = "add_message_poll_item.html">add_message_poll_item</a>
+    <a href = "add_message_poll_vote.html">add_message_poll_vote</a>
+    <a href = "add_message_to_usergroup.html">add_message_to_usergroup</a>
+    <a href = "add_message_vote.html">add_message_vote</a>
+    <a href = "add_student_to_course.html">add_student_to_course</a>
+    <a href = "add_ta_to_course.html">add_ta_to_course</a>
+    <a href = "add_user_to_group.html">add_user_to_group</a>
+    <a href = "create_message.html">create_message</a>
+    <a href = "create_message_group.html">create_message_group</a>
+    <a href = "create_message_reply.html">create_message_reply</a>
+    <a href = "create_message_thread.html">create_message_thread</a>
+    <a href = "create_user_group.html">create_user_group</a>
+    <a href = "create_usergroup_thread.html">create_usergroup_thread</a>
+    <a href = "db_add_user.html">db_add_user</a>
+    <a href = "db_admin_activate_user.html">db_admin_activate_user</a>
+    <a href = "db_admin_add_admin.html">db_admin_add_admin</a>
+    <a href = "db_admin_add_user.html">db_admin_add_user</a>
+    <a href = "db_admin_create_course.html">db_admin_create_course</a>
+    <a href = "db_admin_deactivate_user.html">db_admin_deactivate_user</a>
+    <a href = "db_admin_delete_admin.html">db_admin_delete_admin</a>
+    <a href = "db_init_user.html">db_init_user</a>
+    <a href = "db_login.html">db_login</a>
+    <a href = "db_set_global_setting.html">db_set_global_setting</a>
+    <a href = "delete_message.html">delete_message</a>
+    <a href = "delete_user_from_course.html">delete_user_from_course</a>
+    <a href = "delete_user_from_group.html">delete_user_from_group</a>
+    <a href = "edit_message.html">edit_message</a>
+    <a href = "get_active_courses.html">get_active_courses</a>
+    <a href = "get_all_courses.html">get_all_courses</a>
+    <a href = "get_course.html">get_course</a>
+    <a href = "get_limited_search.html">get_limited_search</a>
+    <a href = "get_limited_thread_messages.html">get_limited_thread_messages</a>
+    <a href = "get_limited_usergroup_threads.html">get_limited_usergroup_threads</a>
+    <a href = "get_message.html">get_message</a>
+    <a href = "get_message_group_members.html">get_message_group_members</a>
+    <a href = "get_message_poll_votes.html">get_message_poll_votes</a>
+    <a href = "get_message_threads.html">get_message_threads</a>
+    <a href = "get_message_votes.html">get_message_votes</a>
+    <a href = "get_my_active_courses.html">get_my_active_courses</a>
+    <a href = "get_my_all_courses.html">get_my_all_courses</a>
+    <a href = "get_my_messagegroups.html">get_my_messagegroups</a>
+    <a href = "get_my_usergroups.html">get_my_usergroups</a>
+    <a href = "get_setting_for_course.html">get_setting_for_course</a>
+    <a href = "get_user.html">get_user</a>
+    <a href = "get_user_settings.html">get_user_settings</a>
+    <a href = "get_usergroup_members.html">get_usergroup_members</a>
+    <a href = "get_usergroup_threads.html">get_usergroup_threads</a>
+    <a href = "get_users_in_course.html">get_users_in_course</a>
+    <a href = "local_login_create_user.html">local_login_create_user</a>
+    <a href = "local_login_get_user.html">local_login_get_user</a>
+    <a href = "local_login_validate.html">local_login_validate</a>
+    <a href = "mark_message_as_read.html">mark_message_as_read</a>
+    <a href = "mark_message_as_unread.html">mark_message_as_unread</a>
+    <a href = "mark_thread_as_read.html">mark_thread_as_read</a>
+    <a href = "mark_thread_as_unread.html">mark_thread_as_unread</a>
+    <a href = "remove_message_from_usergroup.html">remove_message_from_usergroup</a>
+    <a href = "search_messages.html">search_messages</a>
+    <a href = "self_enroll_student.html">self_enroll_student</a>
+    <a href = "set_course_default_setting.html">set_course_default_setting</a>
+    <a href = "set_course_default_tsetting.html">set_course_default_tsetting</a>
+    <a href = "set_group_member_type.html">set_group_member_type</a>
+    <a href = "set_school_default_setting.html">set_school_default_setting</a>
+    <a href = "set_system_default_setting.html">set_system_default_setting</a>
+    <a href = "set_system_default_tsetting.html">set_system_default_tsetting</a>
+    <a href = "set_user_default_setting.html">set_user_default_setting</a>
+    <a href = "set_user_default_tsetting.html">set_user_default_tsetting</a>
+    <a href = "set_user_setting.html">set_user_setting</a>
+    <a href = "set_user_tsetting.html">set_user_tsetting</a>
+    <a href = "update_course_settings.html">update_course_settings</a>
+
+</div>
+<div class="main">
+    <h1 align="center">Settings</h1>
+    <p>Settings can be the glue that holds the different aspects of a client application together.  They
+        allow the creation of additional functionality, beyond the basic functionality provided by the stored procedures.
+        Settings are one of the primary components provided to developers to control different aspects of security for
+        individual users and to protect the site in general.  Settings also allow the storage of information
+        inside of the existing database structure for any additional structure an app would like to create.</p>
+
+    <h2>User Settings</h2>
+    <p>User Settings can be divided into 3 primary properties.
+        <ol>
+            <li>Scope - The area of the application that the setting applies</li>
+            <li>Permission - A users ability to alter a setting</li>
+            <li>Visibility - A users ability to see a setting</li>
+        </ol>
+    </p>
+
+    <p>
+        <h3>Scope</h3>
+        Scope determines the particular group of users that the setting affects.  Keep in mind that even though
+        Scope allows a single setting to apply to many users, the setting ultimately only applies to the user that
+        is currently logged in.
+    </p>
+    <p>
+        Scope is created by the function used to manipulate the setting.  These functions come in 5 layers to create
+        5 scopes.
+        <ul>
+            <li><a href = "set_system_default_setting.html">set_system_default_setting</a> - This level affects all users in the system</li>
+            <li><a href = "set_school_default_setting.html">set_school_default_setting</a> - This level affects all users in the school</li>
+            <li><a href = "set_user_default_setting.html">set_user_default_setting</a> - this level affects a specific user in all of his or her courses</li>
+            <li><a href = "set_course_default_setting.html">set_course_default_setting</a> - this level affects all users in a course</li>
+            <li><a href = "set_user_setting.html">set_user_setting</a> - this level affects a specific user in a specific course</li>
+        </ul>
+    </p>
+    <p>
+        These layers overload each other respectively with the highest layer being user_settings and the lowest layer
+        being system_default_setting.  So, if a user wants to assign a specific setting to a course that does not
+        affect any other courses, he or she would use <a href = "set_user_setting.html">set_user_setting</a>.  However,
+        if they had set a setting using <a href = "set_user_default_setting.html">set_user_default_setting</a> then
+        that would apply to all other courses except the one with the above user_setting that was overriding it.
+        Since any system setting can be overriden, how can an administrator protect system settings that not-adminstrators
+        should not be able to change.  This is where permissions come in.
+    </p>
+    <p>
+        <h3>Permission</h3>
+        Permission determines if a user can change a setting or not.
+    </p>
+    <p>
+        There are 4 permission levels
+    <ul>
+        <li>999: admin</li>
+        <li>3: instructor</li>
+        <li>2: TA</li>
+        <li>1: student</li>
+    </ul>
+    </p>
+    <p>
+        For settings that do not apply to a course, namely system_default, school_default, and user_default only two of
+        those levels are relevent.
+        <ul>
+            <li>999: admin</li>
+            <li>1: student</li>
+        </ul>
+    </p>
+    <p>
+        <h3>Visibility</h3>
+        Visibility determines if a user can see a setting.  Even if you don't want a user to change or use a setting,
+        it needs to be visible if you want it to affect the users browser in any way.
+    </p>
+
+    These permissions are used in two ways.  You may not want an individual student to change specific low level
+    database settings or even see them.   As such, the permission parameter blocks a user from setting a setting, and
+    the visibility parameter blocks users from seeing a setting based on the user’s status in the above permission
+    levels.  The <a href = "set_user_default_setting.html">set_user_default_setting</a> and
+    the <a href = "set_user_setting.html">set_user_setting</a>  commands only apply to a specific user and do not
+    require a user to block access to him or herself.  As such, they do not include permission and visibility
+    parameters. <a href = "set_system_default_setting.html">set_system_default_setting</a>  and <a href = "set_course_default_setting.html">set_course_default_setting</a>
+    are where permissions are set and can override, block, or hide the individual user setting.<br>
+
+
+    <p>
+        There are other setting types that are attached to specific database objects.  Each message has a setting attached
+        to it.  Anyone who can view this message can see that setting.  The same exists for other database table objects.
+    </p>
+</div>
+</body>
+</html>

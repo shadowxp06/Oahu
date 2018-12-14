@@ -1,0 +1,58 @@
+<div class="d-flex flex-column">
+  <div class="mt-2">
+    <button class="ml-5" (click)="goToCreatePost()" mat-raised-button color="primary">New Post</button>
+    <mat-nav-list>
+      <mat-list-item (click)="goToUrl(url.dashboard)">
+        <fa-icon class="fa-icon float-left text-danger  mr-2" [icon]="faHome" mat-list-icon></fa-icon>
+        <h4 class="mouseIconTitleLink" mat-line>Home</h4>
+        <span matBadge="{{BadgeCount.globalAll}}" matBadgeOverlap="false" matBadgePosition="above before" matBadgeSize="medium"></span>
+      </mat-list-item>
+      <mat-list-item (click)="goToUrl(url.starred)">
+        <fa-icon class="fa-icon float-left text-danger  mr-2" [icon]="faFavorite" mat-list-icon></fa-icon>
+        <h4 class="mouseIconTitleLink" mat-line>Starred</h4>
+        <span matBadge="{{BadgeCount.globalStarred}}" matBadgeOverlap="false" matBadgePosition="above before" matBadgeSize="medium"></span>
+      </mat-list-item>
+      <mat-list-item  (click)="goToUrl(url.drafts)" [hidden]="true">
+        <fa-icon class="fa-icon float-left text-primary  mr-2" [icon]="faDrafts" mat-list-icon></fa-icon>
+        <h4 class="mouseIconTitleLink" mat-line>Drafts</h4>
+        <span matBadge="{{BadgeCount.globalDrafts}}" matBadgeOverlap="false" matBadgePosition="above before" matBadgeSize="medium"></span>
+      </mat-list-item>
+      <mat-list-item (click)="goToUrl(url.announcements)">
+        <fa-icon class="fa-icon float-left text-primary  mr-2" [icon]="faAnnouncement" mat-list-icon></fa-icon>
+        <h4 mat-line>Announcements</h4>
+        <span matBadge="{{BadgeCount.globalAnnouncements}}" matBadgeOverlap="false" matBadgePosition="above before" matBadgeSize="medium"></span>
+      </mat-list-item>
+      <mat-list-item  (click)="goToUrl(url.unread)">
+        <fa-icon class="fa-icon float-left text-primary  mr-2" [icon]="faImportant" mat-list-icon></fa-icon>
+        <h4 mat-line>Unread</h4>
+        <span matBadge="{{BadgeCount.unread}}" matBadgeOverlap="false" matBadgePosition="above before" matBadgeSize="medium"></span>
+      </mat-list-item>
+      <mat-list-item (click)="goToUrl(url.search)">
+        <fa-icon class="fa-icon float-left text-primary mr-2" [icon]="faSearch" mat-list-icon></fa-icon>
+        <h4 mat-line>Search</h4>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+  <div class="border-top rounded mt-2" [ngClass]="{'border-primary' : showClassList, 'border-light' : !showClassList}">
+    <mat-nav-list  *ngIf="showClassList">
+      <mat-list-item *ngFor="let item of classList">
+        <div [hidden]="item.UserType !== userLevelsEnum.teachingAssistant && item.UserType !== userLevelsEnum.instructor">
+          <fa-icon (click)="goToUrl(url.coursesettings, item.ID)" class="mr-3 fa-icon text-danger" [icon]="faCourseSettings"></fa-icon>
+        </div>
+        <div *ngIf="item.ID == selectedCourseId">
+          <fa-icon class="fa-icon float-left text-success" [icon]="faSelectedCourse"></fa-icon>
+        </div>
+        <h4 mat-line>
+          <div class="d-flex flex-row flex-wrap">
+            <div class="classSideBarItem" (click)="goToClass(item.ID)">{{item.Name}}</div>
+          </div>
+        </h4>
+      </mat-list-item>
+    </mat-nav-list>
+    <div *ngIf="!showClassList">
+      <div class="d-flex flex-column">
+        <p class="lead">You are not enrolled in any course(s) or all courses are hidden.</p>
+      </div>
+    </div>
+  </div>
+</div>

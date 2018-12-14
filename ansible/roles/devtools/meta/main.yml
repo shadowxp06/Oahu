@@ -1,0 +1,15 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Brandon King
+  description: Install extra development tools for OMS Discussions
+  company: "Georgia Institute of Technology"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+      - xenial
+  galaxy_tags:
+    - config

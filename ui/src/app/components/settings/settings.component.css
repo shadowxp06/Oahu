@@ -1,0 +1,19 @@
+table {
+  width:100px;
+}
+
+.tab-icon {
+  margin-right: 8px;
+}
+
+.fa-tab-icon {
+  margin-top: 10px;
+}
+
+
+div.btnSpacing {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+

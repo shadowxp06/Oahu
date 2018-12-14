@@ -1,0 +1,23 @@
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 1vh;
+  grid-row-gap: 1vh;
+  width: 100%;
+}
+
+.fa-icon {
+  padding: 5px;
+}
+
+.logout {
+  padding: 5px;
+}
+
+
+.profilePicture {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}

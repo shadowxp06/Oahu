@@ -1,0 +1,38 @@
+denyhosts_config_template: denyhosts.conf.j2
+secure_log: /var/log/auth.log
+hosts_deny: /oms-discussions/configs/denyhosts/hosts.deny
+purge_deny: 1w
+purge_threshold: 5
+block_service: sshd
+deny_threshold_invalid: 5
+deny_threshold_valid: 20
+deny_threshold_root: 1
+deny_threshold_restricted: 1
+work_dir: /var/lib/denyhosts
+etc_dir: /etc
+suspicious_login_report_allowed_hosts: YES
+hostname_lookup: YES
+lock_file: /run/denyhosts.pid
+
+## Optional Parameters
+iptables: /sbin/iptables 
+admin_email: wking6@gatech.edu ## lists can be used - wking6@gatech.edu, david.joyner@gatech.edu
+smtp_host: smtp.sendgrid.net 
+smtp_port: 587
+domain: unserious.org # For development purposes, this needs to be changed for production
+smtp_subject: DenyHosts Report from OMS Discussions
+syslog_report: YES
+allowed_hosts_hostname_lookup: YES
+age_reset_valid: 1h
+age_reset_root: 25d
+age_reset_restricted: 25d
+age_reset_invalid: 10d
+reset_on_success: yes
+
+## Don't touch
+daemon_log: /var/log/denyhosts.log
+daemon_log_time_format: '%b %d %I:%M:%S'
+sync_upload: no
+sync_download: yes
+sync_download_threshold: 3
+sync_download_resiliency: 2d

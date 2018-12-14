@@ -1,0 +1,19 @@
+.toggles {
+  display: flex;
+  flex-direction: row;
+}
+
+.info-notice {
+  font-size:12px;
+  font-style: italic;
+}
+
+
+div.toggles {
+  padding-bottom: 30px;
+}
+
+
+div.innerToggle {
+  padding-left: 10px;
+}

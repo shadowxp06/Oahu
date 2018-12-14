@@ -1,0 +1,6 @@
+<mat-toolbar color="primary" class="example-toolbar" *ngIf="!isLoginPage">
+  <button mat-icon-button (click)="setSideBarVar()" [hidden]="!authService.isLoggedIn"><mat-icon>more_vert</mat-icon></button>
+  <span class="pl-2 mouseIconTitleLink" (click)="goToDashboard()"><a>{{title}}</a></span>
+  <span class="toolbar-span"></span>
+  <app-navigation-menu></app-navigation-menu>
+</mat-toolbar>

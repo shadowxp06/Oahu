@@ -1,0 +1,25 @@
+<h1 mat-dialog-title class="d-flex flex-row">
+  <div *ngIf="data.type == dialogType.error">
+  <fa-icon class="fa-icon text-danger fa-lg" [icon]="err"></fa-icon>
+  </div>
+
+  <div *ngIf="data.type == dialogType.warn">
+    <fa-icon class="fa-icon text-warning fa-lg" [icon]="warn"></fa-icon>
+  </div>
+
+  <div *ngIf="data.type == dialogType.info">
+    <fa-icon class="fa-icon text-info fa-lg" [icon]="info"></fa-icon>
+  </div>
+
+  <div *ngIf="data.type == dialogType.success">
+    <fa-icon class="fa-icon text-success fa-lg" [icon]="success"></fa-icon>
+  </div>
+
+  <div class="ml-2">{{ data.title }}</div>
+</h1>
+<div mat-dialog-content>
+
+  <div class="ml-2">
+    {{ data.dialogText }}
+  </div>
+</div>

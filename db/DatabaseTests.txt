@@ -1,0 +1,260 @@
+SELECT test_clear_db()
+SELECT db_admin_add_admin('admin','gtdefault2','brian','brian123') //err1
+SELECT db_admin_add_admin('admin','gtdefault','brian','brian123') //success
+SELECT db_admin_change_password('admin','gtdefault2','admin2','brian123') //err1
+SELECT db_admin_change_password('admin','gtdefault','admin2','brian123') //err2
+SELECT db_admin_change_password('brian','brian123','admin','test123') //success
+// check if new password worked
+SELECT db_admin_add_admin('admin','test123','testuser','test123')//success
+
+SELECT db_admin_delete_admin('admin2','test123','testuser') //err1
+SELECT db_admin_delete_admin('brian','brian123','testuser2') //err2
+SELECT db_admin_delete_admin('brian','brian123','testuser') //success
+SELECT db_admin_delete_admin('brian','brian123','admin') //success
+SELECT db_admin_delete_admin('brian','brian123','brian')  //err3
+
+SELECT db_admin_create_class('brian','brian1232','CS32721','Intro to Database Testing','SECRETC0D3','2018-8-1','2018-12-15') //err1
+SELECT db_admin_create_class('brian','brian123','CS32721','Intro to Database Testing','SECRETC0D3','2018-8-1','2018-12-15') //success
+
+SELECT db_admin_create_class('brian','brian123','CS1401','Intro to Computer Science','NEWSECRETC0D3','2018-8-1','2018-12-15') //success
+SELECT db_admin_create_class('brian','brian123','CS1401','Intro to Computer Science','NEWSECRETC0D3','2017-8-1','2017-12-15') //success
+
+SELECT db_admin_add_instructor('brian2','brian123','swise2',5) //Err1
+SELECT db_admin_add_instructor('brian','brian123','swise2',5) //Err2
+SELECT db_admin_add_instructor('brian','brian123','',5) //Err11
+SELECT db_admin_add_instructor('brian','brian123','swise2',2) // sucess
+
+SELECT db_admin_deactivate_user('brian2','brian123','swise2')//err1
+SELECT db_admin_deactivate_user('brian','brian123','swise22')//err2
+SELECT db_admin_deactivate_user('brian','brian123','swise2') //Success
+SELECT db_admin_deactivate_user('brian','brian123','swise2') //err3
+
+SELECT db_admin_activate_user('brian2','brian123','swise2') //err1
+SELECT db_admin_activate_user('brian','brian123','swise22') //err2
+SELECT db_admin_activate_user('brian','brian123','swise2') //success
+SELECT db_admin_activate_user('brian','brian123','swise2') //err3
+
+
+SELECT db_admin_add_ta('brian2','brian123','bking18',5)  //err1
+SELECT db_admin_add_ta('brian','brian123','bking18',5)  //err2
+SELECT db_admin_add_ta('brian','brian123','',2)  // err11
+SELECT db_admin_add_ta('brian','brian123','bking18',2)  // success
+SELECT db_admin_add_ta('brian','brian123','bking18',2)  // err3
+
+SELECT db_admin_add_student('brian2','brian123','bdavis327',5) //err1
+SELECT db_admin_add_student('brian','brian123','bdavis327',5) //err2
+SELECT db_admin_add_student('brian','brian123','',2) //err 11
+SELECT db_admin_add_student('brian','brian123','bdavis327',2) //success
+SELECT db_admin_add_student('brian','brian123','brian123',2) //err3
+
+SELECT login('weoin2340io','bdavis328') //err1
+SELECT login('weoin2340io','bdavis327') // err 2
+SELECT init_user('','bdavis327','Brian','Davis','ringzero.d9@gmail.com') // err1
+SELECT init_user('weoin2340io','','Brian','Davis','ringzero.d9@gmail.com') //err2
+SELECT init_user('weoin2340io','bdavis327','','Davis','ringzero.d9@gmail.com') //err3
+SELECT init_user('weoin2340io','bdavis327','Brian','','ringzero.d9@gmail.com') // err4
+SELECT init_user('weoin2340io','bdavis327','Brian','Davis','')  //erro 5
+SELECT init_user('weoin2340io','bdavis327','Brian','Davis','ringzero.d9@gmail.com') // success
+SELECT init_user('weoin2340io','bdavis327','Brian','Davis','ringzero.d9@gmail.com')  //err6
+SELECT init_user('gome902pds','bking18','Brandon','King','bking18@gatech.edu')  // success
+SELECT init_user('34tg8hdzsds','tryan3','Terrance','Ryan','tryan3@gatech.edu')  // success
+SELECT init_user('34908haes;l','swise2','Sam','Wise','swise2@gatech.edu')  // success
+SELECT db_admin_deactivate_user('brian','brian123','bdavis327') // success
+SELECT login('weoin2340io','bdavis327') // err3
+SELECT db_admin_activate_user('brian','brian123','bdavis327') //success
+SELECT login('weoin2340io','bdavis327') // success
+
+SELECT self_enroll_student('weoin2340io3','NEWSECRETC0D3',3); //err 1
+SELECT self_enroll_student('weoin2340io','NEWSECRETC0D3',12); //err2
+SELECT self_enroll_student('weoin2340io','NEWSECRETC0D3',4); //err3
+SELECT self_enroll_student('weoin2340io','NEWSECRETC0D37',3); //err5
+SELECT self_enroll_student('weoin2340io','NEWSECRETC0D3',3);//success
+SELECT self_enroll_student('weoin2340io','NEWSECRETC0D3',3);//err4
+
+SELECT delete_user_from_course('34908haes;l','bdavis327',12);//err1
+SELECT delete_user_from_course('34908haes;l2','bdavis327',2);//err2
+SELECT delete_user_from_course('weoin2340io','bdavis327',2); //err3
+SELECT delete_user_from_course('34908haes;l','bdavis3273',2);//err4
+SELECT delete_user_from_course('34908haes;l','tryan3',2); //err5
+SELECT delete_user_from_course('34908haes;l','bdavis327',2); // success
+SELECT delete_user_from_course('34908haes;l','bking18',2);//success
+
+SELECT add_ta_to_course('34908haes;l','bdavis327',12);//err1
+SELECT add_ta_to_course('34908haes;l2','bdavis327',2);//err2
+SELECT add_ta_to_course('weoin2340io','bdavis327',2); //err3
+SELECT add_ta_to_course('34908haes;l','bking18',2); // success
+SELECT add_ta_to_course('34908haes;l','bking18',2); // err4
+
+SELECT add_student_to_course('34908haes;l','bdavis327',12);//err1
+SELECT add_student_to_course('34908haes;l2','bdavis327',2);//err2
+SELECT add_student_to_course('weoin2340io','bdavis327',2); //err3
+SELECT add_student_to_course('34908haes;l','bdavis327',2); // success
+SELECT add_student_to_course('34908haes;l','bdavis327',2); // err4
+
+SELECT get_all_courses('weoin2o') //err1
+SELECT get_all_courses('weoin2340io')  //success 2 courses
+
+SELECT get_active_courses('weoin2o') //err1
+SELECT get_active_courses('weoin2340io') //success 2 courses
+SELECT get_active_courses('gome902pds') //success 1 course
+SELECT get_active_courses('34tg8hdzsds') //success? empty
+
+SELECT db_admin_get_all_courses('briaen','brian123') //err1
+SELECT db_admin_get_all_courses('brian','brian123') //success 3 courses
+
+SELECT db_admin_get_active_courses('briean','brian123') //err 1
+SELECT db_admin_get_active_courses('brian','brian123')  // success 2 courses
+
+SELECT get_students_in_course('weoin2340io',1) // err1
+SELECT get_students_in_course('weoin2340io3',2) //err2
+SELECT get_students_in_course('weoin2340io',2) // success 3 users
+SELECT get_students_in_course('weoin2340io',3) // success 1 user
+SELECT get_students_in_course('weoin2340io',4) //success? empty
+
+SELECT create_message('weoin2340io2',NULL,2,'Welcome', 'My name is brian...') //err1
+SELECT create_message('34tg8hdzsds',NULL,2,'Welcome', 'My name is brian...') //err2
+SELECT create_message('weoin2340io',12,2,'Welcome', 'My name is brian...') //err3
+SELECT create_message('weoin2340io',NULL,2,'Welcome', 'My name is brian...') // success
+SELECT create_message('weoin2340io',NULL,2,'Study group', 'Anyone in?') //success
+SELECT create_message('gome902pds',NULL,2,'Lab 1 due', 'Dont forget') //success
+SELECT create_message('gome902pds',3,2,'upload', 'Where do we upload?') // success
+
+SELECT get_message_threads('weoin2340io2',2) //err1
+SELECT get_message_threads('weoin2340io',5) //err2
+SELECT get_message_threads('34tg8hdzsds',2) // err3
+SELECT get_message_threads('weoin2340io',2) // success 3 messages
+
+SELECT get_thread_messages('weoin2340io3',3) //err1
+SELECT get_thread_messages('weoin2340io',12) //err2
+SELECT get_thread_messages('34tg8hdzsds',3) //err3
+SELECT get_thread_messages('weoin2340io',3) // success 1 message
+
+SELECT get_message('weoin2340io3',3) //err1
+SELECT get_message('weoin2340io',13) //err2
+SELECT get_message('34tg8hdzsds',3) //err3
+SELECT get_message('weoin2340io',3) //success
+
+SELECT create_user_group('weoin2340io',7,'Lab 1') //err1
+SELECT create_user_group('weoin2340io3',2,'Lab 1') //err2
+SELECT create_user_group('34tg8hdzsds',2,'Lab 1') //err3
+SELECT create_user_group('weoin2340io',2,'') //err4
+SELECT create_user_group('weoin2340io',2,NULL) //err4
+SELECT create_user_group('weoin2340io',2,'Lab 1') //success
+SELECT create_user_group('weoin2340io',2,'Lab 1') //err 5
+
+SELECT add_user_to_group('weoin2340io',12,'bdavis327') //err1
+SELECT add_user_to_group('weoin2340io3',2,'bdavis327') //err2
+SELECT add_user_to_group('34tg8hdzsds',2,'bdavis327') //err3
+SELECT add_user_to_group('weoin2340io',2,'bdavis3275') //err4
+SELECT add_user_to_group('weoin2340io',2,'bdavis32712') //err5
+SELECT add_user_to_group('weoin2340io',2,'bdavis3273') //success
+SELECT add_user_to_group('weoin2340io',2,'bdavis327') //success
+SELECT add_user_to_group('weoin2340io',2,'bdavis327') //err 6
+
+SELECT get_usergroup_members('weoin2340io',12)  //err 1
+SELECT get_usergroup_members('weoin2340io3',2) // err 2
+SELECT get_usergroup_members('34tg8hdzsds',2) //err3
+SELECT get_usergroup_members('weoin2340io',2)  //success
+
+SELECT create_message_group('weoin2340io',12,'Favorites')  //err1
+SELECT create_message_group('weoin2340io2',2,'Favorites')  //err2
+SELECT create_message_group('34tg8hdzsds',2,'Favorites')  //err3
+SELECT create_message_group('weoin2340io',2,'')   // err4
+SELECT create_message_group('weoin2340io',2,NULL)   //err4
+SELECT create_message_group('weoin2340io',2,'Favorites')  //success
+SELECT create_message_group('weoin2340io',2,'Favorites')  //err5
+
+
+SELECT add_message_group_members('weoin2340io',-1,2)  //err1
+SELECT add_message_group_members('weoin2340io2',db_get_message_group_id('Favorites'),2)  // err2
+SELECT add_message_group_members('34tg8hdzsds',db_get_message_group_id('Favorites'),2)  //err3
+SELECT add_message_group_members('gome902pds',db_get_message_group_id('Favorites'),2)  //err 4
+SELECT add_message_group_members('weoin2340io',db_get_message_group_id('Favorites'),2)  // success
+SELECT add_message_group_members('weoin2340io',db_get_message_group_id('Favorites'),2)  //err 5
+SELECT add_message_group_members('weoin2340io',db_get_message_group_id('Favorites'),3)  //success
+
+SELECT get_message_group_members('weoin2340io',-1)  //err1
+SELECT get_message_group_members('weoin2340io2',db_get_message_group_id('Favorites')) //err2
+SELECT get_message_group_members('34tg8hdzsds',db_get_message_group_id('Favorites'))  //err3
+SELECT get_message_group_members('weoin2340io',db_get_message_group_id('Favorites'))  //success
+
+
+SELECT add_message_vote('34tg8hdzsds',23,3)  //err1
+SELECT add_message_vote('34tg8hdzsds3',2,3)  //err2
+SELECT add_message_vote('34tg8hdzsds',2,3)  //err3
+SELECT add_message_vote('weoin2340io',2,3)  //success
+SELECT add_message_vote('weoin2340io',2,3)  //err4
+SELECT add_message_vote('gome902pds',2,2)  //success
+
+
+SELECT get_message_votes('gome902pds',22) //err1
+SELECT get_message_votes('gome902pds2',2) //err2
+SELECT get_message_votes('34tg8hdzsds',2)  //err3
+SELECT get_message_votes('gome902pds',2) //success
+
+
+SELECT create_message_poll('weoin2340io2',2,'Welcome', 'My name is brian...') //err1
+SELECT create_message_poll('34tg8hdzsds',2,'Welcome', 'My name is brian...') //err2
+SELECT create_message_poll('weoin2340io',2,'Labs', 'Which one is hardest')  //success
+
+SELECT db_get_message_poll_id('Labs');
+
+SELECT add_message_poll_item('weoin2340io',-1,'Lab 1') //err1
+SELECT add_message_poll_item('weoin2340io2',db_get_message_poll_id('Labs'),'Lab 1')  //err 2
+SELECT add_message_poll_item('34tg8hdzsds',db_get_message_poll_id('Labs'),'Lab 1') //err 3
+SELECT add_message_poll_item('weoin2340io',db_get_message_poll_id('Labs'),'') //err 4
+SELECT add_message_poll_item('weoin2340io',db_get_message_poll_id('Labs'),NULL) //err 4
+SELECT add_message_poll_item('weoin2340io',db_get_message_poll_id('Labs'),'Lab 1') //success
+SELECT add_message_poll_item('weoin2340io',db_get_message_poll_id('Labs'),'Lab 1') //err5
+SELECT add_message_poll_item('weoin2340io',2,'Lab 1') //err6
+SELECT add_message_poll_item('weoin2340io',db_get_message_poll_id('Labs'),'Lab 2') //success
+SELECT add_message_poll_item('weoin2340io',db_get_message_poll_id('Labs'),'Lab 3') //success
+
+SELECT add_message_poll_vote('weoin2340io',5,1) //err1
+SELECT add_message_poll_vote('weoin2340io2',1,1) //err2
+SELECT add_message_poll_vote('34tg8hdzsds',1,1) //err3
+SELECT add_message_poll_vote('weoin2340io',1,1) //success
+
+SELECT get_message_poll_votes('weoin2340io',-1) //err1
+SELECT get_message_poll_votes('weoin2340io2',db_get_message_poll_id('Labs')) //err2
+SELECT get_message_poll_votes('34tg8hdzsds',db_get_message_poll_id('Labs')) //err3
+SELECT get_message_poll_votes('weoin2340io',2) // err4
+SELECT get_message_poll_votes('weoin2340io',db_get_message_poll_id('Labs')) //success
+
+SELECT db_admin_set_system_default_setting('brian2','brian123','TestSetting','Admin Level') // err 1
+SELECT db_admin_set_system_default_setting('brian','brian123','','') //err2
+SELECT db_admin_set_system_default_setting('brian','brian123','TestSetting','') //err 3
+SELECT db_admin_set_system_default_setting('brian','brian123','TestSetting','Admin Level')  // success
+
+SELECT set_course_default_setting('weoin2340io3',0,'TestSetting','Class Default Level') //err1
+SELECT set_course_default_setting('weoin2340io3',2,'TestSetting','Class Default Level') //err2
+SELECT set_course_default_setting('weoin2340io',2,'TestSetting','Class Default Level') //err3
+SELECT set_course_default_setting('34908haes;l',2,'','Class Default Level') //err4
+SELECT set_course_default_setting('34908haes;l',2,'TestSetting','') //err 5
+SELECT set_course_default_setting('34908haes;l',2,'TestSetting','Class Default Level') //success
+SELECT set_course_default_setting('34908haes;l',2,'TestSetting','Class Default Level2') //success
+
+SELECT set_user_default_setting('weoin2340io2','TestSetting','User Default Level') //err 1
+SELECT set_user_default_setting('weoin2340io','','User Default Level') //err2
+SELECT set_user_default_setting('weoin2340io','TestSetting','') //err 3
+SELECT set_user_default_setting('weoin2340io','TestSetting','User Default Level')  //success
+SELECT set_user_default_setting('weoin2340io','TestSetting','User Default Level2') //success
+
+SELECT set_user_setting('weoin2340io',0,'TestSetting','User Level') //err1
+SELECT set_user_setting('weoin2340io2',2,'TestSetting','User Level') //err2
+SELECT set_user_setting('weoin2340io',2,'','User Level') // err3
+SELECT set_user_setting('weoin2340io',2,'TestSetting','') //err 4
+SELECT set_user_setting('weoin2340io',2,'TestSetting','User Level')  // success
+SELECT set_user_setting('weoin2340io',2,'TestSetting','User Level2') //success
+
+SELECT get_setting('weoin2340io2',2,'TestSetting') //err1
+SELECT get_setting('weoin2340io',0,'TestSetting') //success
+SELECT get_setting('weoin2340io',2,'TestSetting') //success
+SELECT get_setting('weoin2340io',3,'TestSetting') //success
+
+
+
+
+
+
+

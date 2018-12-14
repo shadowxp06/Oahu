@@ -1,0 +1,7 @@
+---
+- name: Add OMS Discussions PostgreSQL User
+  postgresql_user: 
+    name: "{{ postgresql_user }}"
+    password: "{{ postgresql_pass }}"
+  become: yes
+  become_user: "{{ postgresql_sysuser }}"

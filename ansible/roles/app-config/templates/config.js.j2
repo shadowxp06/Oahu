@@ -1,0 +1,24 @@
+var config = {
+    app: {
+	    {% if create_prod_config %}
+		port: {{ prod_api_port }},
+		{% else %} 
+		port: {{ dev_api_port }},
+		{% endif %}
+        version: "{{ version }}",
+        attachmentsdir: './attachments/',
+        logdir: './logs/',
+		sendgrid_api_key: '{{ sendgrid_api_key }}',
+		access_key_random: '{{ access_key_random }}',
+		dev_mode_bypass_security: false
+    },
+    db: {
+        host: '{{ postgresql_host }}',
+        port: 5432,
+        database: '{{ postgresql_name }}',
+        user: '{{ postgresql_user }}',
+        password: '{{ postgresql_pass }}'
+    }
+};
+
+module.exports = config;

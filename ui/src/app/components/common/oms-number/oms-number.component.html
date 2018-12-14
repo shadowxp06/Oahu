@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup">
+
+  <div class="d-flex flex-row">
+    <span *ngIf="label">{{label}}</span>
+    <mat-form-field>
+      <input matInput
+             type="number"
+             [placeholder]="placeHolder"
+             [value]="value">
+    </mat-form-field>
+  </div>
+</div>

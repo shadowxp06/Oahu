@@ -1,0 +1,98 @@
+<mat-card class="rounded w-100 mt-2 ml-2 border border-primary">
+  <mat-card-content>
+    <mat-tab-group [(selectedIndex)]="selectedTab">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <fa-icon class="fa-icon fa-lg pr-2" [icon]="search"></fa-icon>
+          <span>Search</span>
+        </ng-template>
+        <mat-card class="card mt-2">
+          <mat-card-content>
+            <form [formGroup]="searchForm">
+              <div class="d-flex flex-column">
+                <app-oms-dropdown [required]="false"
+                                  [items]="courses"
+                                  name="courseSelector"
+                                  [formGroup]="searchForm"
+                                  [invalidId]="0"
+                                  placeholder="Select Course"
+                                  invalidValueMessage="Invalid Course ID"
+                                  selectRequiredMessage="Course is required"
+                                  [(selectedItem)]="courseId"
+                                  (outputData)="courseOutput($event)">
+                </app-oms-dropdown>
+
+                <app-oms-user-lookup [classId]="courseId"
+                                     name="userLookup"
+                                     [formGroup]="searchForm"
+                                     [type]="usrLookupType.user"
+                                     placeholder="Select User(s)"
+                                     [hidden]="courseId == 0">
+                </app-oms-user-lookup>
+
+                <app-oms-user-lookup [classId]="courseId"
+                                     name="groupLookup"
+                                     [formGroup]="searchForm"
+                                     [type]="usrLookupType.group"
+                                     placeholder="Select Group(s)"
+                                     [hidden]="courseId == 0">
+                </app-oms-user-lookup>
+
+                <app-oms-date name="CreationTimeLTE"
+                              placeHolder="Thread Create Time is Less than or Equal To"
+                              [direction]="align.column"
+                              [formGroup]="searchForm">
+                </app-oms-date>
+
+                <app-oms-date name="CreationTimeGTE"
+                              placeHolder="Thread Create Time is Greater than or Equal To"
+                              [direction]="align.column"
+                              [formGroup]="searchForm">
+                </app-oms-date>
+
+                <app-oms-number name="ScoreGTE"
+                                placeHolder="Likes (or upvotes) greater than this number"
+                                value="0"
+                                [formGroup]="searchForm">
+                </app-oms-number>
+
+                <app-oms-number name="ScoreLTE"
+                                placeHolder="Likes (or upvotes) less than this number"
+                                value = 0
+                                [formGroup]="searchForm">
+                </app-oms-number>
+              </div>
+            </form>
+          </mat-card-content>
+          <mat-card-footer>
+            <button type="submit" mat-raised-button color="primary" class="ml-2 mr-2 mb-2" (click)="submit()">Submit</button>
+            <button type="button" mat-raised-button color="accent" class="mb-2" (click)="saveSearch()">Save Search</button>
+          </mat-card-footer>
+        </mat-card>
+
+        <mat-card class="card mt-2">
+          <mat-card-header>
+            <mat-card-title>Recent Search(s)</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <app-searches-datatable [type]="sType.recent" [messages]="recent"></app-searches-datatable>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+      <mat-tab *ngIf="results.length > 0">
+        <ng-template mat-tab-label>
+          <mat-icon>list</mat-icon>
+          <span>Results</span>
+        </ng-template>
+        <app-searches-datatable [type]="sType.results" [messages]="resultsInterface"></app-searches-datatable>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <fa-icon class="fa-icon fa-lg pr-2" [icon]="savedSearches"></fa-icon>
+          <span>Saved Search(s)</span>
+        </ng-template>
+        <app-searches-datatable [type]="sType.savedSearch" [messages]="saved"></app-searches-datatable>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

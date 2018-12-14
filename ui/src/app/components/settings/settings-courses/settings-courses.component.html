@@ -1,0 +1,17 @@
+<div [formGroup]="parentFormGroup">
+<mat-card>
+  <mat-card-content>
+    <div class="d-flex flex-column">
+      <app-courses-datatable [showInactive]="false"
+                             [usePagination]="true"
+                             [allowHideShow]="true"
+                             [doCourseRefresh]="doRefreshes">
+      </app-courses-datatable>
+      <div class="d-flex flex-row">
+        <button type="button" class="btn btn-outline-primary" (click)="openEnrollmentDialog()">Enroll in Course</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+</div>
+

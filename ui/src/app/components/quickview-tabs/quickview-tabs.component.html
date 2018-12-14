@@ -1,0 +1,47 @@
+<mat-card class="rounded w-100 mt-2 ml-2 border border-primary">
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>list</mat-icon>
+          <span [hidden]="courseId == 0" matBadge="{{BadgeCount.all}}" matBadgeOverlap="false">All</span>
+          <span [hidden]="courseId > 0">All</span>
+        </ng-template>
+        <app-messages-datatable
+          [messageType]="messageType.all">
+        </app-messages-datatable>
+      </mat-tab>
+
+      <mat-tab *ngIf="courseId > 0">
+        <ng-template mat-tab-label>
+          <mat-icon class="mr-2">announcement</mat-icon>
+          <span [hidden]="courseId == 0" matBadge="{{BadgeCount.announcements}}" matBadgeOverlap="false">Announcements</span>
+        </ng-template>
+        <app-messages-datatable
+          [messageType]="messageType.announcement">
+        </app-messages-datatable>
+      </mat-tab>
+
+      <mat-tab *ngIf="courseId > 0">
+        <ng-template mat-tab-label>
+          <fa-icon class="mr-2 fa-lg" [icon]="faBook"></fa-icon>
+          <span matBadge="{{BadgeCount.unread}}" matBadgeOverlap="false">Unread</span>
+        </ng-template>
+        <!--<app-messages-datatable-->
+          <!--[messageType]="messageType.unread"-->
+        <!--</app-dashboard-messages-datatable>-->
+      </mat-tab>
+
+      <ng-container *ngFor="let item of filterData">
+        <mat-tab *ngIf="!courseId">
+          <ng-template mat-tab-label>
+            <fa-icon class="fas mr-2 fa-lg" [icon]="faFilter"></fa-icon>
+            {{item.name}}
+          </ng-template>
+          <app-filter-message-datatable [filterName]="item.name">
+          </app-filter-message-datatable>
+        </mat-tab>
+      </ng-container>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

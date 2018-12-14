@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Add Group Member</h1>
+<div mat-dialog-content>
+  <p>Select Members</p>
+  <app-oms-user-lookup
+  [formGroup]="formGroup"
+  [classId]="classId"
+  placeholder="Select User(s)"
+  [type]="usrLookupType.user"
+  (outputData)="getUsers($event)">
+  </app-oms-user-lookup>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.members" cdkFocusInitial>OK</button>
+</div>

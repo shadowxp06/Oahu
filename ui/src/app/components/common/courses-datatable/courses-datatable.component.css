@@ -1,0 +1,12 @@
+
+table {
+  width: 100%;
+}
+
+.icon-class-is-active {
+  color: green;
+}
+
+.icon-class-isnot-active {
+  color: red;
+}

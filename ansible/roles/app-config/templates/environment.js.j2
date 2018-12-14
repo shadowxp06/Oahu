@@ -1,0 +1,15 @@
+export const environment = { 
+    {% if create_prod_config %}
+	production: true,
+	enable_cas_redirect: true,
+	{% else %}
+	production: false,
+	enable_cas_redirect: false,
+	{% endif %}	
+	token_name: '{{ token_name }}',
+	apiUrl: '{{ api_url }}'
+};
+
+{% if create_dev_config %}
+import 'zone.js/dist/zone-error';  // Included with Angular CLI. Recommended for better debugging
+{% endif %}

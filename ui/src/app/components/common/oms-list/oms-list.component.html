@@ -1,0 +1,19 @@
+<div [formGroup]="formGroup">
+  <div *ngIf="showAddButton">
+    <mat-form-field>
+      <input matInput placeholder="{{ AddItemCaption }}" [formControlName]="name">
+    </mat-form-field>
+    <fa-icon class="ml-2 fa-icon fa-lg add text-danger" [icon]="add" (click)="addItem()"></fa-icon>
+  </div>
+
+  <mat-selection-list #list>
+    <h3 mat-subheader>{{ title }}</h3>
+    <mat-list-option *ngFor="let item of items"
+                     [value]="item"
+                      [checkboxPosition]="checkboxPosition">
+      <div class="d-flex flex-row">
+        {{item}}
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+</div>

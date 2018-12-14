@@ -1,0 +1,19 @@
+# Based around geerlingguy's Postgresql ansible playbook
+---
+- name: Add OMS Discussions Database
+  postgresql_db:
+    name: "{{ postgresql_name }}"
+    template: template0
+    owner: "{{ postgresql_user }}"
+    state: present
+  become: yes
+  become_user: "{{ postgresql_sysuser }}"
+  
+- name: Ensure that our user has access to the database
+  become: yes
+  become_user: 'postgres'
+  postgresql_privs:
+    db: "{{ postgresql_name }}"
+    objs: ALL_IN_SCHEMA
+    privs: SELECT,INSERT,UPDATE,DELETE
+    roles: '{{ postgresql_user }}'

@@ -1,0 +1,36 @@
+<div [formGroup]="formGroup"  class="full-width-lookup">
+  <mat-form-field class="full-width-lookup">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let user of selectedUsers"
+                selectable="true"
+                removable="true"
+                (removed)="remove(user)">
+        <div *ngIf="user.IsGroup">
+          {{user.GroupName}}
+        </div>
+        <div *ngIf="!user.IsGroup">
+          {{user.FirstName}} {{user.LastName}}
+        </div>
+        <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
+      </mat-chip>
+      <input [placeholder]="placeholder"
+             #userInput
+             [formControl]="userCtrl"
+             [matAutocomplete]="auto"
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="true"
+              required>
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let user of filteredUsers | async" [value]="user.ID">
+        <div *ngIf="user.IsGroup">
+          {{user.GroupName}} (Group)
+        </div>
+        <div *ngIf="!user.IsGroup">
+          {{user.FirstName}} {{user.LastName}} ({{user.UserType}})
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

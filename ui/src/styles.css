@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+}
+
+.radio-button-list {
+  margin: 5px;
+}
+
+.radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.footer {
+  font-size: 12px;
+  font-style: italic;
+}
+
+
+/* Message CSS */
+.sideBar {
+  display: flex;
+  flex-direction: column;
+}
+
+.numberPadding {
+  padding-top: 10px;
+  padding-bottom: 10px
+}
+
+.sidebar-divider {
+  padding-bottom: 10px;
+}
+
+
+a.headerButton:hover, a.headerButton:active, a.headerButton:visited, a.headerButton:link {
+  color: white;
+}
+
+.mouseIconTitleLink { /* Deprecated - use showCursor */
+  cursor: pointer;
+}
+
+.showCursor { cursor: pointer; }
+
+
+/* Based off of https://stackblitz.com/angular/qdgagjbngjx?file=app%2Fsidenav-responsive-example.ts */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+
+.toolbar-span {
+  flex: 1 1 auto;
+}

@@ -1,0 +1,9 @@
+# This file was sourced/based on the handlers file from https://github.com/geerlingguy/ansible-role-postgresql
+# Need to re-write this at some point
+---
+- name: restart postgresql
+  service:
+    name: "postgresql"
+    state: "restarted"
+    sleep: 60
+

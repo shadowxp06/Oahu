@@ -1,0 +1,24 @@
+<div [formGroup]="parentFormGroup">
+  <mat-card class="card">
+    <mat-card-content>
+      <mat-card class="card mb-2">
+        <mat-card-title>General Information</mat-card-title>
+        <mat-card-content>
+          <div class="d-flex flex-column">
+            <mat-form-field hintLabel="Enter a Course Name">
+              <input matInput formControlName="courseName" placeholder="Course Name" required>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Enter a Course Section">
+              <input matInput formControlName="courseSection" placeholder="Course Section" required>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Enter a Course Description">
+              <input matInput formControlName="courseDescription" placeholder="Course Description" required>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

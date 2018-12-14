@@ -1,0 +1,3 @@
+postgres_config_directory: /etc/postgresql/10/main/
+postgres_config_file: /etc/postgresql/10/main/postgres.conf
+postgres_hba_file: /etc/postgresql/10/main/pg_hba.conf

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col" (click)="goToStep(step.help)" class="mouseIconTitleLink mr-2">
+      <fa-icon class="fas fa-icon" [icon]="faQuestion"></fa-icon>
+    </div>
+    <div class="col" (click)="goToStep(step.settings)" [hidden]="!authSystem.isLoggedIn" class="mouseIconTitleLink mr-2">
+      <fa-icon class="fas fa-icon" [icon]="faCog"></fa-icon>
+    </div>
+    <div class="col" (click)="goToStep(step.logout)" [hidden]="!authSystem.isLoggedIn" class="mouseIconTitleLink">
+      <fa-icon class="fas fa-icon" [icon]="faSignout"></fa-icon>
+    </div>
+  </div>
+</div>

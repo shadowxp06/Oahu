@@ -1,0 +1,41 @@
+include /oms-discussions/configs/nginx/blockedagents.rules;
+
+{% if nginx_use_ssl %}
+server { 
+   listen 80;
+   server_name {{ site }};
+   return 301 https://$host$request_uri;
+}
+{% endif %}
+
+server {
+	 server_name {{ site }};
+
+	 root {{ dist_dir }};
+	
+	{% if nginx_use_ssl %}
+	  listen 443 ssl;
+	  ssl_certificate {{ cert_location }};
+	  ssl_certificate_key {{ cert_key_location }}; 
+	  	  	
+	{% if create_ssl_certs %}
+	  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+	{% endif %}
+	  
+	{% else %}
+	  listen 80;
+	{% endif %}
+	
+	access_log {{ web_nginx_access_log }};
+	error_log {{ web_nginx_error_log }};
+	
+	index index.html index.htm;
+	
+	try_files $uri $uri/ /index.html;
+
+    if ($blockedagent) {
+        return 403;
+    }
+
+    include /etc/nginx/security.conf;
+}

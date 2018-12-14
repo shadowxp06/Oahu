@@ -1,0 +1,34 @@
+<mat-card class="rounded mt-2 ml-2" [hidden]="disableVoteButton()">
+  <mat-card-header>
+    <mat-card-title>Poll</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="pollType == pType.singleSum">
+      <app-oms-radiogroup
+        [items]="listItems"
+        [formGroup]="formGroup"
+        name="PollAnswers"
+        [direction]="DA.column"
+        (outputData)="getVoteValue($event)">
+      </app-oms-radiogroup>
+    </div>
+
+    <div *ngIf="pollType == pType.multiSum">
+      <p>Not implemented yet</p>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button type="submit" mat-raised-button color="primary" (click)="doVote()">Vote</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="rounded mt-2 ml-2" *ngIf="showResults()">
+  <mat-card-header>
+    <mat-card-title>Poll Responses</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <plotly-plot [data]="graph.data" [layout]="graph.layout"></plotly-plot>
+  </mat-card-content>
+</mat-card>
+

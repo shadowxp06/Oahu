@@ -1,0 +1,65 @@
+<div [hidden]="dataSource.length === 0">
+  <table mat-table [dataSource]="localDataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selectedRow(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Course Name </th>
+      <td mat-cell *matCellDef="let element">
+        {{element.Name}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Section </th>
+      <td mat-cell *matCellDef="let element">
+        {{element.Number}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="active">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Show Course On Dashboard </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.active">
+          <mat-icon class="icon-class-is-active">check</mat-icon>
+        </div>
+        <div *ngIf="!element.active">
+          <mat-icon class="icon-class-isnot-active">clear</mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="removeFromDB">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Add/Remove from Dashboard</th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.active">
+          <a><mat-icon class="mouseIconTitleLink" (click)="removeFromDB(element.ID)" class="icon-class-isnot-active">clear</mat-icon></a>
+        </div>
+        <div *ngIf="!element.active">
+          <a><mat-icon class="mouseIconTitleLink" (click)="addToDB(element.ID)" class="icon-class-is-active">check</mat-icon></a>
+        </div>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="selection.toggle(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" *ngIf="usePagination"></mat-paginator>
+</div>
+<div [hidden]="dataSource.length > 0">
+  <div class="text-muted text-center text-primary">No course(s)</div>
+</div>

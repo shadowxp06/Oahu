@@ -1,0 +1,13 @@
+<div [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-select (selectionChange)="emit()"
+                formControlName="{{ name }}"
+                placeholder="Select your timezone"
+                [(value)]="selectedItem">
+      <mat-option *ngFor="let z of tzdata"
+                  [value]="z.value">
+        {{z.zonename}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

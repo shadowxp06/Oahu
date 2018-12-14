@@ -1,0 +1,17 @@
+---
+# Based around the edx_sandbox.yml
+
+
+    
+- name: Copy API Configurations
+  hosts: all
+  become: True
+  gather_facts: True
+  vars_files:
+    - vars/api_vars.yml
+  roles:
+    - role: app-config  
+      when: ansible_build == 'all' or ansible_build == 'web'
+
+
+    

@@ -1,0 +1,63 @@
+<div [formGroup]="parentFormGroup">
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>General Setup</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="d-flex flex-column">
+          <div class="mb-1">
+            <mat-form-field hintLabel="Enter a Display name">
+              <input matInput #input formControlName="displayName" placeholder="Display Name">
+            </mat-form-field>
+          </div>
+          <div class="mb-2">
+            <mat-form-field class="itemSpacing" hintLabel="Your Georgia Tech Email">
+              <input formControlName="email" matInput #input placeholder="Email">
+            </mat-form-field>
+          </div>
+
+          <div [hidden]="true">
+            <app-oms-timezone-select
+            name="timezone"
+            [formGroup]="parentFormGroup"
+            (outputData)="setTimezone($event)"
+            [(selectedItem)]="timezoneSelectedItem">
+            </app-oms-timezone-select>
+          </div>
+
+          <div>
+            <app-oms-radiogroup
+              required="false"
+              [items]="threadShownOptions"
+              name="threadsShown"
+              [formGroup]="parentFormGroup"
+              [direction]="DirAlign.column"
+              title="Threads Shown By Default"
+              [selectedItem]="threadsShown"
+              (outputData)="setThreadsShown($event)">
+            </app-oms-radiogroup>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+  <mat-card class="card border border-primary mt-2" [hidden]="true"> <!-- This is not going to be implemented this semester -->
+    <mat-card-header>
+      <mat-card-title>Misc. Options</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container-fluid">
+        <div class="row">
+          <div>
+            <mat-slide-toggle
+              formControlName="useCreatePostWizard">Use Wizard when Creating New Posts. <div class="info-notice">This will use a Wizard instead of the standard Create Post form</div></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

@@ -1,0 +1,54 @@
+# API Setup
+create_dev_config: true
+create_prod_config: false
+
+# General Setup
+# Can be the following: "all", "db", "web"
+#
+# Need to figure out a way to randomize passwords
+ansible_build: all
+install_dev_tools: true
+
+dev_api_port: 8085
+prod_api_port: 8085
+
+omsdiscussions_user: 'oms-discussions'
+omsdiscussions_user_pass: '@#^@!&!#QURYH2141!!'
+access_key_random: '43214321546543246'
+
+# Database Setup
+postgresql_host: 127.0.0.1
+postgresql_user: omsdb
+postgresql_pass: password123
+postgresql_name: omsdiscussions
+postgresql_sysuser: postgres
+
+product_config_directory: /oms-discussions/config
+
+version: 1.0.0
+
+# nodejs variables
+nodejs_npm_global_packages:
+  - name: jslint
+  
+# nginx variables
+create_ssl_certs: false
+nginx_use_ssl: true
+site: cs8903.williambrandonking.com
+api_site: api.cs8903.williambrandonking.com
+cert_email: bking@unserious.org
+cert_location: /etc/letsencrypt/live/cs8903.williambrandonking.com/fullchain.pem
+cert_key_location: /etc/letsencrypt/live/cs8903.williambrandonking.com/privkey.pem
+api_cert_location: /etc/letsencrypt/live/api.cs8903.williambrandonking.com/fullchain.pem
+api_cert_key_location: /etc/letsencrypt/live/api.cs8903.williambrandonking.com/privkey.pem
+
+dist_dir: /oms-discussions/oms-discussions/dist/oms-discussions
+
+frontend_url: http://localhost:4200/
+api_url: http://localhost:8085/
+
+token_name: access_token
+
+# API
+sendgrid_api_key: test
+use_inbuilt_cors: true

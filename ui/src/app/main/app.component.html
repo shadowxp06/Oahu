@@ -1,0 +1,13 @@
+<div class="main-container" [class.is-mobile]="mobileQuery.matches">
+  <app-nav-titlebar></app-nav-titlebar>
+  <mat-sidenav-container class="sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav mode="over" [(opened)]="showSideBar"  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" *ngIf="authService.isLoggedIn">
+      <app-master-sidebar></app-master-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

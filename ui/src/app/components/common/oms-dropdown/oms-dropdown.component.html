@@ -1,0 +1,43 @@
+<div [formGroup]="formGroup">
+  <mat-form-field>
+    <mat-select (selectionChange)="emit()"
+                (appValidIDValidator)="invalidId"
+                formControlName="{{name}}"
+                [placeholder]="placeholder" multiple *ngIf="multiselect && doValidation">
+      <mat-option *ngFor="let opt of items" [value]="opt.value">
+        {{opt.name}}
+      </mat-option>
+    </mat-select>
+
+    <mat-select (selectionChange)="emit()" (appValidIDValidator)="invalidId"
+                formControlName="{{name}}"
+                [placeholder]="placeholder"
+                *ngIf="!multiselect && doValidation"
+                [(value)]="selectItem">
+      <mat-option *ngFor="let opt of items" [value]="opt.value">
+        {{opt.name}}
+      </mat-option>
+    </mat-select>
+
+    <mat-select (selectionChange)="emit()"
+                formControlName="{{name}}"
+                [placeholder]="placeholder" multiple
+                *ngIf="multiselect && !doValidation">
+      <mat-option *ngFor="let opt of items" [value]="opt.value">
+        {{opt.name}}
+      </mat-option>
+    </mat-select>
+
+    <mat-select (selectionChange)="emit()"
+                formControlName="{{name}}"
+                [placeholder]="placeholder"
+                *ngIf="!multiselect && !doValidation"
+                [(value)]="selectItem">
+      <mat-option *ngFor="let opt of items" [value]="opt.value">
+        {{opt.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-error *ngIf="required && formGroup.controls[name].hasError('required') && !formGroup.controls[name].pristine">{{ invalidValueMessage }}</mat-error>
+  <mat-error *ngIf="formGroup.controls[name].hasError('invalidValue') && !formGroup.controls[name].pristine">{{ selectRequiredMessage }}</mat-error>
+</div>

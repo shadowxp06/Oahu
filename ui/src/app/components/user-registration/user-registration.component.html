@@ -1,0 +1,25 @@
+<mat-card class="rounded w-100 border border-primary mt-1">
+  <mat-card-content>
+    <form [formGroup]="registrationForm">
+      <div class="d-flex flex-column">
+        <mat-form-field class="formField">
+          <input matInput type="text" id="email" placeholder="Email Address" formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field  class="formField">
+          <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
+        </mat-form-field>
+
+        <mat-form-field class="formField">
+          <input matInput type="text" id="FirstName" placeholder="First Name" formControlName="fName" required>
+        </mat-form-field>
+
+        <mat-form-field class="formField">
+          <input matInput type="text" id="LastName" placeholder="Last Name" formControlName="lName" required>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" (click)="doRegistration()" [disabled]="registrationForm.invalid">Login</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

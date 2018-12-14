@@ -1,0 +1,67 @@
+<div [formGroup]="parentFormGroup">
+  <mat-card class="card">
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <div class="toggles">
+            <mat-slide-toggle
+              [color]="color"
+              [checked]="checked"
+              class="toggles"
+              formControlName="AllowAnonymousPosts">
+              Allow Anonymous Posts <div class="info-notice">Allow Students to post anonymously.  Instructors and TA's will still see names.</div>
+            </mat-slide-toggle>
+          </div>
+
+          <div class="toggles" [hidden]="true">
+            <mat-slide-toggle
+              [color]="color"
+              [checked]="checked"
+              class="toggles"
+              formControlName="TaggingInQAPosts">
+              Allow Tagging in Q/A Posts <div class="info-notice">Allow students to tag others in a Q/A post.</div>
+
+              </mat-slide-toggle>
+          </div>
+
+          <div class="toggles" [hidden]="true">
+            <mat-slide-toggle
+              [color]="color"
+              [checked]="checked"
+              formControlName="allowStudentsToTagInstructors">Allow students to tag Instructors and Teaching Assistants.<div class="info-notice">Allow students to tag Instructors and Teaching Assistants in Q/A posts.</div></mat-slide-toggle>
+          </div>
+
+          <div class="toggles">
+            <mat-slide-toggle
+              [color]="color"
+              [checked]="checked"
+              class="toggles"
+              formControlName="allowStudentsToCreateGroups">
+              Allow students to create their own groups.<div class="info-notice">Allow students to create their own groups in this course.</div>
+            </mat-slide-toggle>
+          </div>
+
+          <div class="toggles">
+            <mat-slide-toggle
+              [color]="color"
+              [checked]="checked"
+              class="toggles"
+              formControlName="disallowLikes">
+              Disallow Up-vote (Like) System for course.<div class="info-notice">Disallow students to 'Like' Posts.</div>
+            </mat-slide-toggle>
+          </div>
+          <app-oms-radiogroup
+            required="false"
+            [items]="displayedResources"
+            name="threadsShown"
+            [formGroup]="parentFormGroup"
+            [direction]="DirAlign.column"
+            title="Threads Shown By Default"
+            [selectedItem]="userDisplayedResources"
+            (outputData)="setDisplayedResources($event)">
+          </app-oms-radiogroup>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

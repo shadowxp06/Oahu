@@ -1,0 +1,57 @@
+<mat-form-field class="w-25">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by Group Name">
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+  <ng-container matColumnDef="groupName">
+    <th mat-header-cell *matHeaderCellDef>Group Name</th>
+    <td mat-cell *matCellDef="let row">
+      {{row.GroupName}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="add" *ngIf="isTA">
+    <th mat-header-cell *matHeaderCellDef>Add Member</th>
+    <td mat-cell *matCellDef="let row">
+      <fa-icon (click)="addGroupMember(row.ID)" class="fa-icon fa-lg text-primary" [icon]="add"></fa-icon>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete" *ngIf="isTA">
+    <th mat-header-cell *matHeaderCellDef>Delete Group</th>
+    <td mat-cell *matCellDef="let row">
+      <fa-icon class="fa-icon fa-lg text-danger" [icon]="del"></fa-icon>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Details -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <table class="mt-2 table table-striped table-bordered table-hover table-responsive-sm">
+          <thead>
+            <tr>
+              <th scope="col">Member Name</th>
+              <th scope="col">Delete?</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let member of element.members" >
+              <td>{{member.name}}</td>
+              <td><fa-icon (click)="deleteMember(member.id, member.userId)" class="fa-icon fa-lg text-danger" [icon]="del"></fa-icon></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = element"></tr>
+
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

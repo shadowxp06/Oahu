@@ -1,0 +1,10 @@
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\obj\Debug\json-to-interface.csprojAssemblyReference.cache
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\obj\Debug\json-to-interface.csproj.CoreCompileInputs.cache
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\bin\Debug\json-to-interface.exe.config
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\bin\Debug\json-to-interface.exe
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\bin\Debug\json-to-interface.pdb
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\obj\Debug\json-to-interface.exe
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\obj\Debug\json-to-interface.pdb
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Shadow\Documents\GitHub\oms-discussions\utils\json-to-interface\json-to-interface\obj\Debug\json-to-interface.csproj.CopyComplete
