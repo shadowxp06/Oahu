@@ -42,7 +42,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   submitLogin() {
-    this.authService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value);
+    this.authService.login(this.loginForm.controls['email'].value.toString().toLowerCase(), this.loginForm.controls['password'].value);
   }
 
   get f() { return this.loginForm.controls; }
