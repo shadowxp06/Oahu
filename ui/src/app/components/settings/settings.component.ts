@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { faBook } from '@fortawesome/free-solid-svg-icons/faBook';
 import {SidebarService} from '../../services/sidebar/sidebar.service';
@@ -9,7 +9,6 @@ import {AuthSystemService} from '../../services/auth-system/auth-system.service'
 import {UserService} from '../../services/user/user.service';
 import {UserSettings} from '../../interfaces/user-settings';
 import {ClassListInterface} from '../../interfaces/class-list';
-import {MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-settings',
@@ -148,7 +147,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this._api.postUserSettings(settings).subscribe((result) => {
       if (result) {
         if (result['ErrNo'] === 0 || result['ErrNo'] === undefined) {
-          this._user.refreshUserSettings();
           this._alert.showSuccessAlert('Setting(s) saved');
           this.forceSidebarRefresh();
         } else {

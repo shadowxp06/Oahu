@@ -34,7 +34,6 @@ router.get('/', function (req, res) {
         resmodel = new responseModel();
         resmodel.ErrNo = '1';
         resmodel.Description = 'Invalid Session Key.';
-        console.log('Runs');
         global.db.isValidToken(token).then(function (response) {
             if (response) {
                 global.db.executeQuery('SELECT "ID","Name" from "Courses"',[]).then(function (resp2) {
