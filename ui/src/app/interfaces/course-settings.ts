@@ -10,7 +10,8 @@ export interface CourseSettings {
   allowStudentsToCreateGroups: boolean;
   allowStudentsToTagInQAPosts: boolean;
   allowStudentsToTagTAInstructors: boolean;
-  disableCouurseEnrollment: false;
+  disableCourseEnrollment: boolean;
+  disallowLikes: boolean;
   threadsShown: number;
 }
 

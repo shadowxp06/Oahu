@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { SidebarService } from '../../services/sidebar/sidebar.service';
 import {MatTabGroup} from '@angular/material';
@@ -7,8 +7,6 @@ import {ActivatedRoute} from '@angular/router';
 import {Course} from '../../interfaces/course';
 import {AlertService} from '../../services/alert/alert.service';
 import * as moment from 'moment';
-import {UserService} from '../../services/user/user.service';
-import {MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-course-settings',

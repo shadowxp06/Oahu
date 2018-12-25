@@ -15,6 +15,7 @@ class courseModel {
         this.allowAnonymousPosts = false;
         this.threadsShown = 0;
         this.disableCourseEnrollment = false;
+        this.disallowLikes = false;
     }
 }
 

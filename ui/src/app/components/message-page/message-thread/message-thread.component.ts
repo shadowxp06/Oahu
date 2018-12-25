@@ -18,6 +18,7 @@ import {MessageThreadEvents} from '../../../interfaces/message-thread-events';
 import {PollVoteItem} from '../../../interfaces/poll-vote-item';
 import {UserLevels} from '../../../enums/user-levels.enum';
 import {SidebarService} from '../../../services/sidebar/sidebar.service';
+import {CourseSettings} from '../../../interfaces/course-settings';
 
 @Component({
   selector: 'app-message-thread',
@@ -54,6 +55,8 @@ export class MessageThreadComponent implements OnInit {
   isFavorite = false;
   isReadOnly = false;
   isAnonymousPost = false;
+
+  allowLikes = true;
 
   UsrLevel = UserLevels;
   CurrentUserLevel: UserLevels = this.UsrLevel.noAccess;
@@ -176,6 +179,12 @@ export class MessageThreadComponent implements OnInit {
               this.messageData.pollItems = this.pollItems;
               this.messageData.pollType = this.pollType;
 
+              this._api.getCourseSettings(item[0].CourseID).subscribe((setData: CourseSettings) => {
+                if (setData) {
+                  this.allowLikes = !setData.disallowLikes;
+                }
+              });
+
               this.emit();
 
               this._api.getMessageVotes(this.parentId).subscribe( ( msgData: MessageVote[]) => {
@@ -205,22 +214,26 @@ export class MessageThreadComponent implements OnInit {
   }
 
   doLike() {
-    this.msgVote.isInstructorEndorsed = false;
-    this.msgVote.userId = this._auth.userId;
-    this.msgVote.postId = this.parentId;
-    this.msgVote.score = 1;
+    if (this.allowLikes) {
+      this.msgVote.isInstructorEndorsed = false;
+      this.msgVote.userId = this._auth.userId;
+      this.msgVote.postId = this.parentId;
+      this.msgVote.score = 1;
 
-    this._api.updateVote(this.msgVote).subscribe((data => {
-      if (data) {
-        if (data.body['ErrNo'] === '0') {
-          this.numberOfGoodAnswers += 1;
-        } else if (data.body['ErrNo'] === '999') {
-          this.numberOfGoodAnswers += -1;
-        } else {
-          this._alert.showErrorAlert(data.body['Description']);
+      this._api.updateVote(this.msgVote).subscribe((data => {
+        if (data) {
+          if (data.body['ErrNo'] === '0') {
+            this.numberOfGoodAnswers += 1;
+          } else if (data.body['ErrNo'] === '999') {
+            this.numberOfGoodAnswers += -1;
+          } else {
+            this._alert.showErrorAlert(data.body['Description']);
+          }
         }
-      }
-    }));
+      }));
+    } else {
+      this._alert.showInfoAlert('Upvote system has been disabled for this course.  Contact the Course instructor for more information.');
+    }
   }
 
   emit() {
@@ -228,7 +241,14 @@ export class MessageThreadComponent implements OnInit {
   }
 
   addFavorite() {
-    const setting: Setting = { Name: '', Value: '', Rank: 0, Type: 0, Permission: SettingLayer.user, Visibility: SettingVisibility.user, UserID: this._auth.userId };
+    const setting: Setting = { Name: '',
+      Value: '',
+      Rank: 0,
+      Type: 0,
+      Permission: SettingLayer.user,
+      Visibility: SettingVisibility.user,
+      UserID: this._auth.userId };
+
     const favorite = this.parentId;
 
     setting.Name = 'favorites';

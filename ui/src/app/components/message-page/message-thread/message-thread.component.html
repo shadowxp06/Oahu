@@ -45,9 +45,10 @@
         <fa-icon class="ml-2 fa-icon fa-1x showCursor"
                   [ngClass]="{'text-primary': !hasLiked, 'text-danger': hasLiked}"
                   [icon]="faThumbsUp"
+                  [hidden]="!allowLikes"
                   (click)="doLike()"></fa-icon>
       </a>
-      <div class="ml-1 likes pt-1">{{numberOfGoodAnswers}}</div>
+      <div class="ml-1 likes pt-1" [hidden]="!allowLikes">{{numberOfGoodAnswers}}</div>
       <a [routerLink]="['/editpost/', parentId]">
         <fa-icon class="ml-3 fa-icon fa-1x text-primary"
                  [icon]="faEdit"

@@ -232,6 +232,9 @@ router.get('/', function (req, res) {
                                             case 'threadsShown':
                                                 model.threadsShown = response[i]['Value'];
                                                 break;
+                                            case 'disallowLikes':
+                                                model.disallowLikes = response[i]['Value'];
+                                                break;
                                         }
                                     }
                                 }
