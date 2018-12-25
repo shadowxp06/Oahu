@@ -103,8 +103,17 @@ export class MessagesDatatableComponent implements OnInit, OnDestroy {
                 message: '',
                 selected: false,
                 courseId: 0,
-                courseName: ''
+                courseName: '',
+                isReadOnly: false
               };
+
+              const obj = JSON.parse(data2[i].Setting);
+
+              for (let z = 0; z < obj.length; z++) {
+                if (obj[z].Name === 'makeThreadReadOnly') {
+                  CMItem.isReadOnly = true;
+                }
+              }
 
               CMItem.messageId  = data2[i].ID;
               CMItem.courseId = data2[i].CourseID;
@@ -147,8 +156,17 @@ export class MessagesDatatableComponent implements OnInit, OnDestroy {
                 message: '',
                 selected: false,
                 courseId: 0,
-                courseName: ''
+                courseName: '',
+                isReadOnly: false
               };
+
+              const obj = JSON.parse(data2[i].Setting);
+
+              for (let z = 0; z < obj.length; z++) {
+                if (obj[z].Name === 'makeThreadReadOnly') {
+                  CMItem.isReadOnly = true;
+                }
+              }
 
               CMItem.messageId  = data2[i].ID;
               CMItem.courseId = data2[i].CourseID;
@@ -207,8 +225,17 @@ export class MessagesDatatableComponent implements OnInit, OnDestroy {
               message: '',
               selected: false,
               courseId: 0,
-              courseName: ''
+              courseName: '',
+              isReadOnly: false
             };
+
+            const obj = JSON.parse(data2[i].Setting);
+
+            for (let z = 0; z < obj.length; z++) {
+              if (obj[z].Name === 'makeThreadReadOnly') {
+                CMItem.isReadOnly = true;
+              }
+            }
 
             CMItem.messageId  = data2[i].ID;
             CMItem.courseId = data2[i].CourseID;

@@ -49,6 +49,7 @@ export class MessageThreadComponent implements OnInit {
   hasVoted = false;
   hasLiked = false;
   isFavorite = false;
+  isReadOnly = false;
 
 
   permission = SettingLayer;
@@ -77,10 +78,8 @@ export class MessageThreadComponent implements OnInit {
 
   ngOnInit() {
     if (this.parentId && this.parentId > 0) {
-      console.log(this.parentId);
       this._api.getThreadReplies(this.parentId).subscribe(((data: Post[]) => {
         if (data) {
-          console.log(data);
           if (data['ErrNo'] === undefined || data['ErrNo'] === 0) {
             const item = data.filter(x => x.ID.toString() === this.parentId.toString());
             if (item) {
@@ -135,8 +134,17 @@ export class MessageThreadComponent implements OnInit {
                   case 'correctAnswer':
                     setting.Name = 'correctAnswer';
                     break;
+                  case 'makeThreadReadOnly':
+                    setting.Name = 'markThreadReadOnly';
+                    break;
                 }
                 setting.Value = jsonSettings[n]['Value'];
+
+                if (setting.Name === 'markThreadReadOnly') {
+                  // @ts-ignore
+                  this.isReadOnly = setting.Value === true;
+                }
+
                 this.settings.push(setting);
               }
 
@@ -169,7 +177,6 @@ export class MessageThreadComponent implements OnInit {
               this._alert.showErrorAlert('Invalid Message');
             }
           } else {
-            console.log('Does this run? 2');
             this._route.navigate(['/dashboard']);
             this._alert.showErrorAlert('Invalid Message');
           }

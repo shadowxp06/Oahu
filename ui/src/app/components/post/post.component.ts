@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Courseusersinterface} from '../../interfaces/courseusers';
 import {Tagsinterface} from '../../interfaces/tagsinterface';
@@ -24,8 +24,6 @@ import {PollType} from '../../interfaces/poll-type.enum';
 import {SettingLayer} from '../../enums/setting-layer.enum';
 import {SettingVisibility} from '../../enums/setting-visibility.enum';
 import {UserLookupType} from '../../enums/user-lookup-type.enum';
-import {MediaMatcher} from '@angular/cdk/layout';
-
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -143,7 +141,8 @@ export class PostComponent implements OnInit, OnDestroy {
       releaseDate: new FormControl(''),
       userLookup: new FormControl(),
       groupLookup: new FormControl(),
-      sendEmailNotificationsImmediately: new FormControl({value: false}, [])
+      sendEmailNotificationsImmediately: new FormControl({value: false}, []),
+      makeThreadReadOnly: new FormControl({value: false}, [])
     });
 
     if (this.postId > 0) {
@@ -266,7 +265,7 @@ export class PostComponent implements OnInit, OnDestroy {
   }
 
   saveDraft() {
-    // Will not make it into CS8903 Release
+    this._alert.showInfoAlert('Feature not ready yet.');
   }
 
   getUsers($event) {
@@ -317,6 +316,9 @@ export class PostComponent implements OnInit, OnDestroy {
 
     this.post.SendEmailNotificationsImmediately = this.postForm.get('sendEmailNotificationsImmediately').value;
     this.post.Settings.push(releaseDate);
+
+    const markThreadAsReadOnly = { Name: 'makeThreadReadOnly', Value: this.postForm.get('makeThreadReadOnly').value, Rank: 0, Type: 1, UserID: 0, Permission: this.permission.course, Visibility: this.visibility.course };
+    this.post.Settings.push(markThreadAsReadOnly);
 
     if (this.post.Type === MessageType.poll) {
       /* Poll Items */

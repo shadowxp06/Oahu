@@ -71,6 +71,13 @@
               [type]="usrLookupType.group"
               (outputData)="getGroups($event)">
             </app-oms-user-lookup>
+
+            <app-oms-toggle
+              name="makeThreadReadOnly"
+              [formGroup]="postForm"
+              label="Make Thread Read-Only"
+              [hidden]="hideReleaseDate">
+            </app-oms-toggle>
           </mat-card-content>
         </mat-card>
 
@@ -152,7 +159,7 @@
 
         <div class="d-flex flex-row pt-2 pb-2">
           <button color="primary" type="submit" (click)="save()" [disabled]="!postForm.valid" mat-raised-button>Submit</button>&nbsp;
-          <button color="accent" (click)="saveDraft()" mat-raised-button [hidden]="true">Save Draft</button>
+          <button color="accent" (click)="saveDraft()" mat-raised-button>Save Draft</button>
         </div>
       </form>
     </div>

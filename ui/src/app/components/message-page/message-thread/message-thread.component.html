@@ -21,7 +21,8 @@
   <mat-card-actions>
     <div class="d-flex flex-row">
       <a [routerLink]="['/createreply', parentId]"
-         [queryParams]="{reply: true, retMessageId: parentId}">
+         [queryParams]="{reply: true, retMessageId: parentId}"
+         *ngIf="!isReadOnly">
         <mat-icon class="mr-2" color="primary">reply</mat-icon>
       </a>
       <a>

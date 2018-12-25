@@ -108,6 +108,7 @@ import { FilterMessageDatatableComponent } from './components/common/filter-mess
 import { NavTitlebarComponent } from './components/common/nav-titlebar/nav-titlebar.component';
 import { UserManualComponent } from './components/help/user-manual/user-manual.component';
 import { InstructorsManualComponent } from './components/help/instructors-manual/instructors-manual.component';
+import { OmsToggleComponent } from './components/common/oms-toggle/oms-toggle.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -180,7 +181,8 @@ export function tokenGetter() {
     FilterMessageDatatableComponent,
     NavTitlebarComponent,
     UserManualComponent,
-    InstructorsManualComponent
+    InstructorsManualComponent,
+    OmsToggleComponent
   ],
   imports: [
     BrowserModule,

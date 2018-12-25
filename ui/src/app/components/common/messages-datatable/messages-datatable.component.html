@@ -42,7 +42,13 @@
     <td mat-cell *matCellDef="let row">
       <div class="d-flex flex-row">
         <div><a class="showCursor"><fa-icon (click)="addFavorite(row.messageId)" class="fa-lg mr-2 text-danger" [icon]="faFavorite" [hidden]="userId == row.authorid"></fa-icon></a></div>
-        <div class="pl-2"><a [routerLink]="['/createreply/', row.messageId]" [queryParams]="{reply: true}"><mat-icon class="mr-2" color="primary">reply</mat-icon></a></div>
+        <div class="pl-2">
+          <a [routerLink]="['/createreply/', row.messageId]"
+                             [queryParams]="{reply: true}"
+             *ngIf="!row.isReadOnly">
+            <mat-icon class="mr-2" color="primary">reply</mat-icon>
+          </a>
+        </div>
         <div class="pl-2"><a [routerLink]="['/editpost/', row.messageId]"><fa-icon class="fa-lg" [icon]="faEdit" [hidden]="userId != row.authorId"></fa-icon></a></div>
         <div class="pl-3"><fa-icon class="fa-lg text-warning" [icon]="faDelete" [hidden]="userId != row.authorId"></fa-icon></div>
       </div>

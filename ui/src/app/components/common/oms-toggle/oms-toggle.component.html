@@ -1,0 +1,10 @@
+<div [formGroup]="formGroup" class="d-flex flex-row">
+  <mat-slide-toggle
+    [name]="name"
+    color="primary"
+    formControlName="{{name}}"
+    [checked]="checkValue"
+    (change)="emit()">
+  </mat-slide-toggle>
+  <span>{{label}}</span>
+</div>
