@@ -15,3 +15,4 @@ TABLESPACE pg_default;
 
 ALTER TABLE public."DatabaseInfo"
     OWNER to postgres;
+	
