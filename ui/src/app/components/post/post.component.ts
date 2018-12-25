@@ -142,7 +142,8 @@ export class PostComponent implements OnInit, OnDestroy {
       userLookup: new FormControl(),
       groupLookup: new FormControl(),
       sendEmailNotificationsImmediately: new FormControl({value: false}, []),
-      makeThreadReadOnly: new FormControl({value: false}, [])
+      makeThreadReadOnly: new FormControl({value: false}, []),
+      postAnonymously: new FormControl({value: false}, [])
     });
 
     if (this.postId > 0) {
@@ -319,6 +320,9 @@ export class PostComponent implements OnInit, OnDestroy {
 
     const markThreadAsReadOnly = { Name: 'makeThreadReadOnly', Value: this.postForm.get('makeThreadReadOnly').value, Rank: 0, Type: 1, UserID: 0, Permission: this.permission.course, Visibility: this.visibility.course };
     this.post.Settings.push(markThreadAsReadOnly);
+
+    const anonymousPost = { Name: 'anonymousPost', Value: this.postForm.get('isAnonymousPost').value, Rank: 0, Type: 1, UserID: 0, Permission: this.permission.course, Visibility: this.visibility.course  };
+    this.post.Settings.push(anonymousPost);
 
     if (this.post.Type === MessageType.poll) {
       /* Poll Items */

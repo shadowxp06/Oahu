@@ -16,6 +16,8 @@ import {SettingLayer} from '../../../enums/setting-layer.enum';
 import {SettingVisibility} from '../../../enums/setting-visibility.enum';
 import {MessageThreadEvents} from '../../../interfaces/message-thread-events';
 import {PollVoteItem} from '../../../interfaces/poll-vote-item';
+import {UserLevels} from '../../../enums/user-levels.enum';
+import {SidebarService} from '../../../services/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-message-thread',
@@ -46,10 +48,15 @@ export class MessageThreadComponent implements OnInit {
   editedDate = '01/01/2018';
   isLocked = false;
   displayName = 'George P. Burdell';
+  anonymousName = 'George P. Burdell';
   hasVoted = false;
   hasLiked = false;
   isFavorite = false;
   isReadOnly = false;
+  isAnonymousPost = false;
+
+  UsrLevel = UserLevels;
+  CurrentUserLevel: UserLevels = this.UsrLevel.noAccess;
 
 
   permission = SettingLayer;
@@ -74,7 +81,8 @@ export class MessageThreadComponent implements OnInit {
               private _auth: AuthSystemService,
               private _user: UserService,
               private _route: Router,
-              private _alert: AlertService) { }
+              private _alert: AlertService,
+              private _sidebar: SidebarService) { }
 
   ngOnInit() {
     if (this.parentId && this.parentId > 0) {
@@ -137,12 +145,23 @@ export class MessageThreadComponent implements OnInit {
                   case 'makeThreadReadOnly':
                     setting.Name = 'markThreadReadOnly';
                     break;
+                  case 'anonymousPost':
+                    setting.Name = 'anonymousPost';
+                    break;
                 }
                 setting.Value = jsonSettings[n]['Value'];
 
                 if (setting.Name === 'markThreadReadOnly') {
                   // @ts-ignore
                   this.isReadOnly = setting.Value === true;
+                }
+
+                if (setting.Name === 'anonymousPost') {
+                  // @ts-ignore
+                  if (setting.Value === true) {
+                    this.CurrentUserLevel = this._sidebar.classAccessLookup(item[0].CourseID);
+                    this.isAnonymousPost = true;
+                  }
                 }
 
                 this.settings.push(setting);

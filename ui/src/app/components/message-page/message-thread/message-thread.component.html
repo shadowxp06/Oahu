@@ -7,7 +7,23 @@
       <p class="h4">{{title}}</p>
     </mat-card-title>
     <mat-card-subtitle class="ml-4">
-      Asked on {{editedDate | date: 'MM/dd/yyyy hh:mm a'}} by {{displayName}}
+      <div class="d-flex flex-row">
+        Asked on {{editedDate | date: 'MM/dd/yyyy hh:mm a'}} by
+
+        <div *ngIf="!isAnonymousPost" class="ml-1">
+          {{displayName}}
+        </div>
+
+        <div *ngIf="isAnonymousPost" class="ml-1">
+          <div *ngIf="CurrentUserLevel === UsrLevel.student">
+            {{anonymousName}}
+          </div>
+
+          <div *ngIf="CurrentUserLevel === UsrLevel.instructor || CurrentUserLevel === UsrLevel.teachingAssistant">
+            {{displayName}}
+          </div>
+        </div>
+      </div>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>

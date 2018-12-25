@@ -11,6 +11,7 @@ import {faThumbsUp, faEdit, faStar, faLock} from '@fortawesome/free-solid-svg-ic
 })
 export class ThreadReplyComponent implements OnInit {
   @Input() parentId: number;
+  @Input() isReadOnly: boolean;
 
   _replies: PostReplyInterface[] = [];
 

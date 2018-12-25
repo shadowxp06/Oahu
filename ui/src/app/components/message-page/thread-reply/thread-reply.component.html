@@ -1,6 +1,9 @@
 <div [hidden]="(numberOfReplies > 0)">
   <p class="lead">No replies yet.</p>
 </div>
+<div [hidden]="!isReadOnly">
+  <p class="lead">This thread has been marked as Read-Only by the Author.</p>
+</div>
 <div [hidden]="!(messageType != mt.question)">
   <mat-card class="mt-2" *ngFor="let item of _replies">
     <mat-card-header>
