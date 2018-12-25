@@ -1,71 +1,58 @@
-<div class="container-fluid">
-  <div class="row">
-    <div fxLayout="column" fxFill>
-      <div fxLayout fxFlex>
-        <div fxFlex="15" fxShow="{{ showSideBar }}">
-          <app-master-sidebar></app-master-sidebar>
-        </div>
-        <div fxFlex="{{ showSideBar ? '83' : '100' }}">
-          <mat-card class="rounded w-100 border border-primary mt-1">
-            <mat-card-content>
-              <mat-tab-group #settingsTab>
-                <mat-tab>
-                  <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">dashboard</mat-icon>
-                    Basic
-                  </ng-template>
-                  <ng-template matTabContent>
-                    <app-course-settings-basic [parentFormGroup]="courseSettings.controls.basic"></app-course-settings-basic>
-                  </ng-template>
-                </mat-tab>
+<mat-card class="rounded w-100 border border-primary mt-2 ml-2">
+  <mat-card-content>
+    <mat-tab-group #settingsTab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">dashboard</mat-icon>
+          Basic
+        </ng-template>
+        <ng-template matTabContent>
+          <app-course-settings-basic [parentFormGroup]="courseSettings.controls.basic"></app-course-settings-basic>
+        </ng-template>
+      </mat-tab>
 
-                <mat-tab>
-                  <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">hearing</mat-icon>
-                    Settings
-                  </ng-template>
-                  <ng-template matTabContent>
-                    <app-course-settings-qa [parentFormGroup]="courseSettings.controls.qa"></app-course-settings-qa>
-                  </ng-template>
-                </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">hearing</mat-icon>
+          Settings
+        </ng-template>
+        <ng-template matTabContent>
+          <app-course-settings-qa [parentFormGroup]="courseSettings.controls.qa"></app-course-settings-qa>
+        </ng-template>
+      </mat-tab>
 
-                <mat-tab>
-                  <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">touch_app</mat-icon>
-                    Participation
-                  </ng-template>
-                  <ng-template matTabContent>
-                    <app-course-settings-participation [parentFormGroup]="courseSettings.controls.participation"></app-course-settings-participation>
-                  </ng-template>
-                </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">touch_app</mat-icon>
+          Participation
+        </ng-template>
+        <ng-template matTabContent>
+          <app-course-settings-participation [parentFormGroup]="courseSettings.controls.participation"></app-course-settings-participation>
+        </ng-template>
+      </mat-tab>
 
-                <mat-tab>
-                  <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">add</mat-icon>
-                    Enrollment
-                  </ng-template>
-                  <ng-template matTabContent>
-                    <app-course-settings-enrollment [parentFormGroup]="courseSettings.controls.enrollment"></app-course-settings-enrollment>
-                  </ng-template>
-                </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">add</mat-icon>
+          Enrollment
+        </ng-template>
+        <ng-template matTabContent>
+          <app-course-settings-enrollment [parentFormGroup]="courseSettings.controls.enrollment"></app-course-settings-enrollment>
+        </ng-template>
+      </mat-tab>
 
-                <mat-tab>
-                  <ng-template mat-tab-label>
-                    <mat-icon class="tab-icon">group_work</mat-icon>
-                    Groups
-                  </ng-template>
-                  <ng-template matTabContent>
-                    <app-course-settings-groups [parentFormGroup]="courseSettings.controls.groups"></app-course-settings-groups>
-                  </ng-template>
-                </mat-tab>
-              </mat-tab-group>
-            </mat-card-content>
-          </mat-card>
-          <div>
-            <button type="submit" class="mt-2" mat-raised-button color="primary" (click)="submit()" [disabled]="courseSettings.invalid">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">group_work</mat-icon>
+          Groups
+        </ng-template>
+        <ng-template matTabContent>
+          <app-course-settings-groups [parentFormGroup]="courseSettings.controls.groups"></app-course-settings-groups>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+<div>
+  <button type="submit" class="mt-2 ml-2" mat-raised-button color="primary" (click)="submit()" [disabled]="courseSettings.invalid">Submit</button>
 </div>

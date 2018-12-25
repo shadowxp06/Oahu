@@ -79,11 +79,12 @@
               [hidden]="hideReleaseDate">
             </app-oms-toggle>
 
-            <app-oms-slide-toggle-list
+            <app-oms-toggle
             name="isAnonymousPost"
             [formGroup]="postForm"
-            label="Post Anonymously">
-            </app-oms-slide-toggle-list>
+            label="Post Anonymously"
+            [hidden]="!showAnonymousPost">
+            </app-oms-toggle>
           </mat-card-content>
         </mat-card>
 

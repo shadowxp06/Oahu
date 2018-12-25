@@ -24,6 +24,9 @@ import {PollType} from '../../interfaces/poll-type.enum';
 import {SettingLayer} from '../../enums/setting-layer.enum';
 import {SettingVisibility} from '../../enums/setting-visibility.enum';
 import {UserLookupType} from '../../enums/user-lookup-type.enum';
+import {Setting} from '../../interfaces/setting';
+import {CourseSettings} from '../../interfaces/course-settings';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -61,6 +64,10 @@ export class PostComponent implements OnInit, OnDestroy {
   anonymity: number;
   votes: string[] = [];
   /* end of Output Variables */
+
+  /* Course Settings */
+  showAnonymousPost = true;
+  /* End of Course Settingss */
 
   post: Post = {CourseID: 0, Title: '', Message: '', Settings: [], GroupMembers: [], UserMembers: [], PollType: 0, PollItems: [], Type: 0, UserID: 0, ID: 0, TimeCreated: '', FirstName: '', LastName: '', Setting: '', PollVotes: [], score: 0};
 
@@ -143,7 +150,7 @@ export class PostComponent implements OnInit, OnDestroy {
       groupLookup: new FormControl(),
       sendEmailNotificationsImmediately: new FormControl({value: false}, []),
       makeThreadReadOnly: new FormControl({value: false}, []),
-      postAnonymously: new FormControl({value: false}, [])
+      isAnonymousPost: new FormControl({value: false}, [])
     });
 
     if (this.postId > 0) {
@@ -188,6 +195,13 @@ export class PostComponent implements OnInit, OnDestroy {
   onChanges() {
     this.postForm.get('courseSelector').valueChanges.subscribe(val => {
       this.courseIdUpdate(val);
+
+      if (val > 0) {
+        this._api.getCourseSettings(val).subscribe((data: CourseSettings) => {
+          console.log(data);
+          this.showAnonymousPost = data.allowAnonymousPosts;
+        });
+      }
     });
 
     this.postForm.get('postTypeSelector').valueChanges.subscribe(val => {
@@ -363,7 +377,6 @@ export class PostComponent implements OnInit, OnDestroy {
         } else {
           this._alert.showErrorAlert(data['body']['Description']);
         }
-
       }));
     } else {
       this._api.postThread(this.postCourseId, this.post).subscribe((data => {
