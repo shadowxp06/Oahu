@@ -34,6 +34,12 @@ namespace SchemaUpdater.classes
             get;
             set;
         }
+
+        private int _dbVersion
+        {
+            get;
+            set;
+        }
      
         public PostgresSQL()
         {
@@ -48,7 +54,7 @@ namespace SchemaUpdater.classes
             _conn = new NpgsqlConnection(_sb.ToString());
             try
             {
-
+                _conn.Open();
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -57,7 +63,21 @@ namespace SchemaUpdater.classes
 
         public void close()
         {
+            try
+            {
+                if (_conn != null)
+                {
+                    _conn.Close();
+                }
+            }catch(Exception e)
+            {
 
+            }
+        }
+
+        public Int32 getDBVersion()
+        {
+            return _dbVersion;
         }
     }
 }
