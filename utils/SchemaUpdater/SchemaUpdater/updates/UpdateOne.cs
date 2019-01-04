@@ -9,13 +9,13 @@ namespace SchemaUpdater.updates
     {
         public UpdateOne(Updater upd) : base(upd)
         {
-            _version = 1;
-            _fileName = "UpdateOne.sql";
         }
 
         public void runOne()
         {
-            if (_update.apiVersion <= _version)
+            _version = 1;
+            _fileName = "UpdateOne.sql";
+            if (_update.dbVersion <= _version)
             {
                 readFile(_fileName);
                 _update.executeNonQuery(_sb.ToString());
@@ -69,6 +69,16 @@ namespace SchemaUpdater.updates
                         }
                     }
                 }       
+            }
+        }
+
+        public void runTwo()
+        {
+            _version = 2;
+            _fileName = "UpdateTwo.sql";
+            if (_update.dbVersion <= _version)
+            {
+                // Placeholder
             }
         }
     }

@@ -92,6 +92,7 @@ namespace SchemaUpdater.baseClasses
         {
             UpdateOne updOne = new UpdateOne(this);
             updOne.runOne();
+            updOne.runTwo();
 
             updateLastUpdate();
             updateDBVersion();
