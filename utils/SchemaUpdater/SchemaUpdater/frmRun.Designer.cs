@@ -37,12 +37,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtHost = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devTestCmd = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkDoVerUpdate = new System.Windows.Forms.CheckBox();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtUser
             // 
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.Location = new System.Drawing.Point(124, 15);
+            this.txtUser.Location = new System.Drawing.Point(119, 30);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(214, 26);
             this.txtUser.TabIndex = 0;
@@ -51,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 21);
+            this.label1.Location = new System.Drawing.Point(17, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 1;
@@ -61,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 62);
+            this.label2.Location = new System.Drawing.Point(17, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 3;
@@ -70,7 +77,7 @@
             // txtPass
             // 
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(124, 56);
+            this.txtPass.Location = new System.Drawing.Point(119, 71);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(214, 26);
             this.txtPass.TabIndex = 2;
@@ -79,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 108);
+            this.label3.Location = new System.Drawing.Point(17, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 20);
             this.label3.TabIndex = 5;
@@ -88,7 +95,7 @@
             // txtDB
             // 
             this.txtDB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDB.Location = new System.Drawing.Point(124, 102);
+            this.txtDB.Location = new System.Drawing.Point(119, 117);
             this.txtDB.Name = "txtDB";
             this.txtDB.Size = new System.Drawing.Size(214, 26);
             this.txtDB.TabIndex = 4;
@@ -97,7 +104,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 147);
+            this.label4.Location = new System.Drawing.Point(17, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 20);
             this.label4.TabIndex = 7;
@@ -106,7 +113,7 @@
             // txtHost
             // 
             this.txtHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHost.Location = new System.Drawing.Point(124, 144);
+            this.txtHost.Location = new System.Drawing.Point(119, 159);
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(214, 26);
             this.txtHost.TabIndex = 6;
@@ -114,7 +121,7 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(258, 189);
+            this.btnOK.Location = new System.Drawing.Point(253, 204);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(80, 31);
             this.btnOK.TabIndex = 8;
@@ -122,11 +129,63 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.devToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(342, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
+            // 
+            // devToolStripMenuItem
+            // 
+            this.devToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.devTestCmd});
+            this.devToolStripMenuItem.Name = "devToolStripMenuItem";
+            this.devToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.devToolStripMenuItem.Text = "Dev";
+            // 
+            // devTestCmd
+            // 
+            this.devTestCmd.Name = "devTestCmd";
+            this.devTestCmd.Size = new System.Drawing.Size(180, 22);
+            this.devTestCmd.Text = "Test Conn";
+            this.devTestCmd.Click += new System.EventHandler(this.devTestCmd_Click);
+            // 
+            // chkDoVerUpdate
+            // 
+            this.chkDoVerUpdate.AutoSize = true;
+            this.chkDoVerUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDoVerUpdate.Location = new System.Drawing.Point(21, 211);
+            this.chkDoVerUpdate.Name = "chkDoVerUpdate";
+            this.chkDoVerUpdate.Size = new System.Drawing.Size(173, 24);
+            this.chkDoVerUpdate.TabIndex = 10;
+            this.chkDoVerUpdate.Text = "Do Version Update?";
+            this.chkDoVerUpdate.UseVisualStyleBackColor = true;
+            // 
             // frmRun
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 232);
+            this.ClientSize = new System.Drawing.Size(342, 249);
+            this.Controls.Add(this.chkDoVerUpdate);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtHost);
@@ -136,9 +195,13 @@
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUser);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmRun";
             this.Text = "Oahu Schema Updater";
             this.Load += new System.EventHandler(this.frmRun_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,6 +218,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtHost;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem devToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem devTestCmd;
+        private System.Windows.Forms.CheckBox chkDoVerUpdate;
     }
 }
 

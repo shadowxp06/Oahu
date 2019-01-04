@@ -31,3 +31,5 @@ C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\obj\Debu
 C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\obj\Debug\SchemaUpdater.csproj.CopyComplete
 C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\obj\Debug\SchemaUpdater.exe
 C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\obj\Debug\SchemaUpdater.pdb
+C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\log4net.dll
+C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\log4net.xml
