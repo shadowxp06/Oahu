@@ -33,3 +33,6 @@ C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\obj\Debu
 C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\obj\Debug\SchemaUpdater.pdb
 C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\log4net.dll
 C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\log4net.xml
+C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\Log4Net.config
+C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\sqlFiles\UpdateOne.sql
+C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\sqlFiles\UpdateOne_createDatabaseInfo.sql

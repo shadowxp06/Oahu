@@ -40,9 +40,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.devToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.devTestCmd = new System.Windows.Forms.ToolStripMenuItem();
             this.chkDoVerUpdate = new System.Windows.Forms.CheckBox();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeDBVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeUIVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeAPIVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fixAWSPermissionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDevTest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +83,7 @@
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(119, 71);
             this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(214, 26);
             this.txtPass.TabIndex = 2;
             // 
@@ -133,7 +138,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.devToolStripMenuItem});
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(342, 24);
@@ -151,23 +156,8 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
-            // 
-            // devToolStripMenuItem
-            // 
-            this.devToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.devTestCmd});
-            this.devToolStripMenuItem.Name = "devToolStripMenuItem";
-            this.devToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.devToolStripMenuItem.Text = "Dev";
-            // 
-            // devTestCmd
-            // 
-            this.devTestCmd.Name = "devTestCmd";
-            this.devTestCmd.Size = new System.Drawing.Size(180, 22);
-            this.devTestCmd.Text = "Test Conn";
-            this.devTestCmd.Click += new System.EventHandler(this.devTestCmd_Click);
             // 
             // chkDoVerUpdate
             // 
@@ -179,6 +169,52 @@
             this.chkDoVerUpdate.TabIndex = 10;
             this.chkDoVerUpdate.Text = "Do Version Update?";
             this.chkDoVerUpdate.UseVisualStyleBackColor = true;
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuDevTest,
+            this.changeDBVersionToolStripMenuItem,
+            this.changeUIVersionToolStripMenuItem,
+            this.changeAPIVersionToolStripMenuItem,
+            this.fixAWSPermissionsToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // changeDBVersionToolStripMenuItem
+            // 
+            this.changeDBVersionToolStripMenuItem.Name = "changeDBVersionToolStripMenuItem";
+            this.changeDBVersionToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.changeDBVersionToolStripMenuItem.Text = "Change DB Version";
+            this.changeDBVersionToolStripMenuItem.Click += new System.EventHandler(this.changeDBVersionToolStripMenuItem_Click);
+            // 
+            // changeUIVersionToolStripMenuItem
+            // 
+            this.changeUIVersionToolStripMenuItem.Name = "changeUIVersionToolStripMenuItem";
+            this.changeUIVersionToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.changeUIVersionToolStripMenuItem.Text = "Change UI Version";
+            this.changeUIVersionToolStripMenuItem.Click += new System.EventHandler(this.changeUIVersionToolStripMenuItem_Click);
+            // 
+            // changeAPIVersionToolStripMenuItem
+            // 
+            this.changeAPIVersionToolStripMenuItem.Name = "changeAPIVersionToolStripMenuItem";
+            this.changeAPIVersionToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.changeAPIVersionToolStripMenuItem.Text = "Change API Version";
+            this.changeAPIVersionToolStripMenuItem.Click += new System.EventHandler(this.changeAPIVersionToolStripMenuItem_Click);
+            // 
+            // fixAWSPermissionsToolStripMenuItem
+            // 
+            this.fixAWSPermissionsToolStripMenuItem.Name = "fixAWSPermissionsToolStripMenuItem";
+            this.fixAWSPermissionsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.fixAWSPermissionsToolStripMenuItem.Text = "Fix AWS Permissions";
+            this.fixAWSPermissionsToolStripMenuItem.Click += new System.EventHandler(this.fixAWSPermissionsToolStripMenuItem_Click);
+            // 
+            // mnuDevTest
+            // 
+            this.mnuDevTest.Name = "mnuDevTest";
+            this.mnuDevTest.Size = new System.Drawing.Size(181, 22);
+            this.mnuDevTest.Text = "Dev Test";
             // 
             // frmRun
             // 
@@ -221,9 +257,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem devToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem devTestCmd;
         private System.Windows.Forms.CheckBox chkDoVerUpdate;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeDBVersionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeUIVersionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeAPIVersionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fixAWSPermissionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuDevTest;
     }
 }
 

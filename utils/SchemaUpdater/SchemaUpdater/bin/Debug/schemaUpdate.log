@@ -1,0 +1,5 @@
+2019-01-04 14:16:23,543 [1] ERROR SchemaUpdater.utils.LogUtils [(null)] - Test write
+2019-01-04 14:17:30,483 [1] ERROR SchemaUpdater.utils.LogUtils [(null)] - Test write
+2019-01-04 14:17:41,180 [1] ERROR SchemaUpdater.utils.LogUtils [(null)] - Test write
+2019-01-04 14:21:26,511 [1] ERROR SchemaUpdater.utils.LogUtils [(null)] - Could not find a part of the path 'C:\Users\Shadow\Documents\GitHub\Oahu\utils\SchemaUpdater\SchemaUpdater\bin\Debug\sqlfiles\UpdateOne.sql'.
+2019-01-04 15:00:09,510 [1] INFO  SchemaUpdater.utils.LogUtils [(null)] - DB Version has been set to 2

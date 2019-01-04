@@ -102,6 +102,7 @@ namespace SchemaUpdater.baseClasses
 
         public DataTable executeQuery(string query)
         {
+            _recordCount = 0;
             DataTable dt = new DataTable();
 
             try
@@ -174,7 +175,7 @@ namespace SchemaUpdater.baseClasses
             return exists;
         }
 
-       public bool doesColumnExist(string col, string table)
+        public bool doesColumnExist(string col, string table)
         {
             bool exists = true;
             try
@@ -196,7 +197,6 @@ namespace SchemaUpdater.baseClasses
                 LogUtils.writeLog(BaseEnums.LogLevel.Error, e.Message);
             }
             return exists;
-        }
-
+       }
     }
 }
