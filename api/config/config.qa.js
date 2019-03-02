@@ -5,7 +5,7 @@ var config = {
         attachmentsdir: './attachments/',
         logdir: './logs/',
         allow_origin: '*',
-        sendgrid_api_key: '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',
+        sendgrid_api_key: '',
         access_key_random: '43278417844231',
         dev_mode_bypass_security: true,
         use_inbuilt_cors: true
