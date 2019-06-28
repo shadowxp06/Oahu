@@ -1,0 +1,48 @@
+---
+# Based around the edx_sandbox.yml
+- name: Do Project-based Setup
+  hosts: all
+  become: True
+  gather_facts: True
+  vars_files:
+    - vars/vagrant_dev.yml
+  roles:
+    - role: app-config  
+      when: ansible_build == 'all' or ansible_build == 'web'
+
+
+- name: Install Nginx
+  hosts: all
+  become: True
+  gather_facts: True
+  vars_files:
+    - vars/vagrant_dev.yml
+  roles:
+    - role: nginx
+      nginx_sites:
+        - api
+        - client
+      nginx_default:
+        - client
+      when: ansible_build == 'all' or ansible_build == 'web'
+        
+- name: Install Node.JS
+  hosts: all
+  become: True
+  gather_facts: True
+  vars_files:
+    - vars/vagrant_dev.yml
+  roles:
+    - role: nodejs
+      when: ansible_build == 'all' or ansible_build == 'web'
+
+- name: Install PostgreSQL
+  hosts: all
+  become: True
+  gather_facts: True
+  vars_files:
+    - vars/vagrant_dev.yml
+  roles:
+    - role: postgresql
+      when: ansible_build == 'all' or ansible_build == 'db'
+    
