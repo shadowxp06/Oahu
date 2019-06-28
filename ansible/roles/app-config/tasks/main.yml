@@ -39,7 +39,7 @@
   
 - name: Create OMS Discussions Log File Directory
   file:
-    path: {{ log_file_directory }}
+    path: "{{ log_file_directory }}"
     state: directory
     mode: '0755'
   
