@@ -21,4 +21,4 @@ iptables -A INPUT -p tcp --destination-port 8085 -j DROP # API Layer
 iptables -A INPUT -p tcp --destination-port 4200 -j DROP # Frontend
 iptables -A INPUT -p tcp --destination-port 5432 -j DROP # PostgreSQL
 
-echo "($current_date_time) $currentuser ran the firewall rules" >> /var/logs/oms_discussions.logs/oms_discussions.log
+echo "($current_date_time) $currentuser ran the firewall rules" >> /var/logs/oms_discussions/oms_discussions.log

@@ -18,3 +18,4 @@ letsencrypt_cert_filename: cert.pem
 certbot_command: certbot --agree-tos --standalone --noninteractive
 nginx_sites: /etc/nginx/sites-enabled
 nginx_sites_dest: /root/nginx-sites
+log_file_directory: /var/logs/oms_discussions/

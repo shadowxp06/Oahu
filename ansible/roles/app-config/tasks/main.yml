@@ -37,6 +37,12 @@
     state: link
   when: create_dev_config
   
+- name: Create OMS Discussions Log File Directory
+  file:
+    path: {{ log_file_directory }}
+    state: directory
+    mode: '0755'
+  
 - name: Apply firewall rules 
   script: "{{ firewall_rules_link_dest }}"
   when: create_dev_config
