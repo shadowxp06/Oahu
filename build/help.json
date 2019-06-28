@@ -1,0 +1,9 @@
+{
+  "do":"-do <maintenance/audit>",
+  "restart":"-restart <nginx/postgresql/api-dev/client-dev/api-prod/client-prod>",
+  "show":"-show <about/service_status/netstat_listening>",
+  "build":"-build <api-dev/client-dev/api-prod/client-prod>",
+  "do maintenance":"-do maintenance <db/manage_script_upgrade/logs/system_upgrades>",
+  "do install":"-do install <prereqs/project>",
+  "do audit":"-do audit <api/client>"
+}

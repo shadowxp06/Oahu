@@ -1,8 +1,8 @@
 ---
 qa_config: /oms-discussions/api/config/config.qa.js
 prod_config: /oms-discussions/api/config/config.prod.js
-environment_file: /oms-discussions/oms-discussions/src/environments/environment.js
-proxy_config_file: /oms-discussions/oms-discussions/proxy.conf.json
+environment_file: /oms-discussions/ui/src/environments/environment.js
+proxy_config_file: /oms-discussions/ui/proxy.conf.json
 firewall_rules: /oms-discussions/configs/firewall/iptables.prod.sh
 firewall_rules_link_dest: /root/run-firewall-rules
 omsdiscussions_user_home: /oms-discussions/user

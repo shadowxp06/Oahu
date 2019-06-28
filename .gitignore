@@ -24,3 +24,8 @@ utils/SchemaUpdater/.vs/SchemaUpdater/v15/Server/sqlite3/storage.ide
 utils/SchemaUpdater/.vs/SchemaUpdater/v15/Server/sqlite3/storage.ide-wal
 utils/SchemaUpdater/bin/*
 utils/SchemaUpdater/obj/*
+devops/.vagrant/
+devops/.vagrant
+devops/.vagrant/*
+devops/dev_environment/.vagrant
+devops/dev_environment/*.log

@@ -42,7 +42,7 @@ cert_key_location: /etc/letsencrypt/live/cs8903.williambrandonking.com/privkey.p
 api_cert_location: /etc/letsencrypt/live/api.cs8903.williambrandonking.com/fullchain.pem
 api_cert_key_location: /etc/letsencrypt/live/api.cs8903.williambrandonking.com/privkey.pem
 
-dist_dir: /oms-discussions/oms-discussions/dist/oms-discussions
+dist_dir: /oms-discussions/ui/dist/oms-discussions
 
 frontend_url: http://localhost:4200/
 api_url: http://localhost:8085/
