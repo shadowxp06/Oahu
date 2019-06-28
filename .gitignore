@@ -29,3 +29,5 @@ devops/.vagrant
 devops/.vagrant/*
 devops/dev_environment/.vagrant
 devops/dev_environment/*.log
+api_dev/dist
+api_dev/node_modules
